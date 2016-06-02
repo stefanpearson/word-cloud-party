@@ -1,0 +1,22 @@
+{
+  "name": "word-cloud-party",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Simple word cloud UI.",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.com:stefanpearson/word-cloud-party.git"
+  },
+  "contributors": [
+    {
+      "name": "Stefan Pearson",
+      "email": "stefan@ribot.co.uk"
+    }
+  ],
+  "dependencies": {},
+  "devDependencies": {}
+}
