@@ -1,13 +1,26 @@
 // External dependencies
-//
+var React = require( 'react' ),
+    ReactDom = require( 'react-dom' );
 
 
 // Dependencies
-var topicProvider = require( './data/topics' );
+var topicProvider = require( './data/topics' ),
+    Main = require( './components/main' );
 
 
-topicProvider.get()
-  .then( function( topics ) {
-    console.log( 'Got the topics!', topics );
-    console.log( 'lol' );
-  } );
+/**
+ * Initialise the app
+ */
+var init = function init() {
+  var appEl = document.getElementById( 'app' );
+
+  // Mount the app
+  if ( appEl ) {
+    ReactDom.render( <Main />, document.getElementById( 'app' ) );
+  }
+
+};
+
+
+// Initialise
+init();

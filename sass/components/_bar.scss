@@ -55,6 +55,7 @@ $bar-height: rem( $y-unit * 3 );
     position: absolute;
     top: 0;
     right: -0.25em;
-    font-size: rem( $size-mini );
+    font-size: rem( $size-nano );
     line-height: $bar-height;
+    @include bold;
 }

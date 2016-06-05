@@ -7,7 +7,7 @@
 
 
 var environment = {
-  baseUrl: 'http://localhost:7654'
+  baseUrl: process.env.PROTOCOL + '://' + process.env.HOST
 };
 
 

@@ -52,6 +52,13 @@
  * Include adjustments to tracking within mixins.
  */
 
+// -3
+@mixin nano {
+    font-size: rem( $size-nano );
+    line-height: rem( $leading-nano );
+    letter-spacing: 0;
+}
+
 // -2
 @mixin mini {
     font-size: rem( $size-mini );

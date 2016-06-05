@@ -24,8 +24,11 @@ $face-punctuation: Baskerville, serif;
  * All leading to be multiples of the baseline grid unit.
  */
 
+$size-nano: 9.216;
+$leading-nano: 15;
+
 $size-mini: 11.52;
-$leading-mini: 15;
+$leading-mini: 18;
 
 $size-small: 14.4;
 $leading-small: 21; // Magic number

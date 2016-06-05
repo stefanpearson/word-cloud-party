@@ -1,17 +1,32 @@
 // External dependencies
-var gulp = require( 'gulp' ),
+var dotenv = require( 'dotenv' ),
+    gulp = require( 'gulp' ),
     sass = require( 'gulp-sass' ),
+    cleanCss = require( 'gulp-clean-css' ),
     rename = require( 'gulp-rename' ),
     source = require( 'vinyl-source-stream' ),
     browserify = require( 'browserify' ),
     watchify = require( 'watchify' ),
-    reactify = require( 'reactify' );
+    reactify = require( 'reactify' ),
+    uglify = require( 'gulp-uglify' ),
+    streamify = require( 'gulp-streamify' ),
+    envify = require( 'envify' );
+
+
+var environmentName = process.env.NODE_ENV || process.env.node_env || 'development';
+
+
+// Load .env in development environment
+if ( environmentName == 'development' ) {
+  dotenv.load();
+}
 
 
 // Compile Sass
 gulp.task( 'sass', function() {
   return gulp.src( './sass/main.scss' )
     .pipe( sass().on( 'error', sass.logError ) )
+    .pipe( cleanCss() )
     .pipe( rename( 'build.css' ) )
     .pipe( gulp.dest( './server/public/css' ) );
 } );
@@ -21,34 +36,21 @@ gulp.task( 'sass', function() {
 gulp.task( 'browserify', function() {
   var bundler = browserify( {
       entries: [ './client/index.js' ],
-      transform: [ reactify ],
-      debug: true, // Sourcemap
-      cache: {},
-      packageCache: {},
-      fullPaths: true
+      transform: [ reactify, envify ],
+      extensions: [ '.jsx' ]
   } );
 
   return bundler.bundle()
     .pipe( source( 'build.js' ) )
+    //.pipe( streamify( uglify() ) )
     .pipe( gulp.dest( './server/public/js' ) );
 } );
 
 
-// // Watch Sass dir
-// gulp.task( 'sass:watch', function() {
-//   gulp.watch( './sass/**/*.scss', [ 'sass' ] );
-// } );
-
-
-// // Watch client JS dir
-// gulp.task( 'browserify:watch', function() {
-//   gulp.watch( './client/**/*.js', [ 'browserify' ] );
-// } );
-
-
+// Watch files in development
 gulp.task( 'watch', function() {
   gulp.watch( './sass/**/*.scss', [ 'sass' ] );
-  gulp.watch( './client/**/*.js', [ 'browserify' ] );
+  gulp.watch( './client/**/*.js*', [ 'browserify' ] );
 } );
 
 

@@ -23,8 +23,8 @@ var environment = {
     pid: process.pid
   },
   name: environmentName,
-  protocol: process.env.PROTOCOL || 'http',
-  baseUrl: '//' + process.env.HOST,
+  protocol: process.env.PROTOCOL,
+  baseUrl: process.env.PROTOCOL + '://' + process.env.HOST,
   port: process.env.PORT || process.env.port,
   logLevel: process.env.LOG_LEVEL
 };

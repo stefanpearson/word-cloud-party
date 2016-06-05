@@ -24,17 +24,30 @@
     word-break: nowrap;
     cursor: pointer;
 
+    &:before {
+        @include pseudo-element;
+        z-index: -1;
+        top: 0;
+        right: -0.25em;
+        bottom: 0;
+        left: -0.25em;
+        opacity: 0;
+        background-color: $color-b;
+        pointer-events: none;
+    }
+
     &:hover {
 
         &:before {
-            z-index: -1;
-            @include pseudo-element;
-            top: 0;
-            right: -0.25em;
-            bottom: 0;
-            left: -0.25em;
-            background-color: $color-b;
             opacity: 0.35;
+        }
+    }
+
+    &.is-active {
+
+        &:before,
+        &:hover:before {
+            opacity: 1;
         }
     }
 }

@@ -1,0 +1,20 @@
+/**
+ * Word cloud
+ * ==========
+ *
+ * Word cloud component
+ */
+
+
+// Imports
+@import "../vendor/bourbon/bourbon";
+@import "../vendor/susy/susy";
+@import "../settings/global-vars";
+@import "../settings/global-mixins";
+@import "../settings/typography-vars";
+@import "../settings/typography-mixins";
+
+
+.word-cloud {
+    @include user-select( none );
+}

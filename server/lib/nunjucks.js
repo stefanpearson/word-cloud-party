@@ -7,7 +7,7 @@ var environment = require( './environment' );
 
 
 // Local variables
-var nunjucksEnvironment = nunjucks.configure( './server/public/templates', {
+var nunjucksEnvironment = nunjucks.configure( './server/templates', {
   autoescape: true,
   watch: true
 } );
