@@ -1,0 +1,155 @@
+/**
+ * Defaults
+ * ========
+ *
+ * Reset default browser styles.
+ */
+
+
+// Imports
+@import "../vendor/bourbon/bourbon";
+@import "../settings/global-vars";
+@import "../settings/global-mixins";
+
+
+* {
+    padding: 0;
+    border: 0;
+    margin: 0;
+    outline: none;
+    -webkit-border-radius: 0;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+}
+
+body {
+    position: relative;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-touch-callout: none;
+}
+
+address,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+input,
+textarea,
+select,
+label,
+img {
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 1em;
+    font-weight: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+blockquote {
+
+    &:empty {
+        display: none;
+    }
+}
+
+cite {
+    font-style: normal;
+}
+
+address {
+    font-style: normal;
+}
+
+img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}
+
+a img {
+    border: none;
+}
+
+input,
+textarea {
+    background-color: transparent;
+    -webkit-user-select: auto;
+}
+
+input[type="submit"] {
+    cursor: pointer;
+}
+
+textarea {
+    resize: none;
+}
+
+select {
+    background-color: transparent;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.clear {
+    clear: both;
+}
+
+.clearfix {
+
+    &:before,
+    &:after {
+        content: "\0020";
+        display: block;
+        height: 0;
+        overflow: hidden;
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+// Enable hardware-acceleration for faster scrolling
+.acceleration-on {
+    @include pseudo-element;
+    bottom: 0;
+    right: 0;
+    @include accelerate;
+}

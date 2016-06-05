@@ -1,0 +1,60 @@
+/**
+ * Bar
+ * ===
+ *
+ * Bar styles
+ */
+
+
+// Imports
+@import "../vendor/bourbon/bourbon";
+@import "../settings/global-vars";
+@import "../settings/global-mixins";
+@import "../settings/typography-vars";
+@import "../settings/typography-mixins";
+
+
+$bar-height: rem( $y-unit * 3 );
+
+
+.bar {
+    padding-right: $bar-height / 2;
+    padding-left: $bar-height / 2;
+}
+
+.bar__value {
+    position: relative;
+    width: 0;
+    height: $bar-height;
+    background-color: $color-base-faint;
+
+    &:before,
+    &:after {
+        @include pseudo-element;
+        top: 0;
+        bottom: 0;
+        width: $bar-height / 2;
+        background-color: inherit;
+    }
+
+    &:before {
+        right: 100%;
+        border-top-left-radius: $bar-height / 2;
+        border-bottom-left-radius: $bar-height / 2;
+    }
+
+    &:after {
+        left: 100%;
+        border-top-right-radius: $bar-height / 2;
+        border-bottom-right-radius: $bar-height / 2;
+    }
+}
+
+.bar__label {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    right: -0.25em;
+    font-size: rem( $size-mini );
+    line-height: $bar-height;
+}

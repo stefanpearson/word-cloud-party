@@ -1,0 +1,72 @@
+/**
+ * Word
+ * ====
+ *
+ * Word component
+ */
+
+
+// Imports
+@import "../vendor/bourbon/bourbon";
+@import "../vendor/susy/susy";
+@import "../settings/global-vars";
+@import "../settings/global-mixins";
+@import "../settings/typography-vars";
+@import "../settings/typography-mixins";
+
+
+.word {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    margin-right: 0.4em;
+    @include gamma;
+    word-break: nowrap;
+    cursor: pointer;
+
+    &:hover {
+
+        &:before {
+            z-index: -1;
+            @include pseudo-element;
+            top: 0;
+            right: -0.25em;
+            bottom: 0;
+            left: -0.25em;
+            background-color: $color-b;
+            opacity: 0.35;
+        }
+    }
+}
+
+.word--positive {
+    color: $color-positive;
+}
+
+.word--negative {
+    color: $color-negative;
+}
+
+.word--1 {
+    font-weight: 900;
+}
+
+.word--2 {
+    font-weight: 700;
+}
+
+.word--3 {
+    font-weight: 500;
+}
+
+.word--4 {
+    font-weight: 400;
+}
+
+.word--5 {
+    font-weight: 300;
+}
+
+.word--6 {
+    font-weight: 100;
+}

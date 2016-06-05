@@ -1,0 +1,81 @@
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+
+
+// Environment
+$image-path: "../images/";
+$font-path: "../fonts/";
+
+// Config
+$max-wrapper-width: rem( 1280 );
+
+// Base units
+$baseline-grid-unit: 9;
+$y-unit: 6; // All spacing and layout to be multiple or divisible of this
+$x-unit: 6; // All spacing and layout to be multiple or divisible of this
+$h-gutter: $x-unit * 4; // Horizontal gutter space
+$v-gutter: $y-unit * 3; // Vertical gutter space
+$radius-base: rem( 3 ); // Common radius for components
+
+// Susy
+$susy: (
+    //container: 100%,
+    container: auto,
+    columns: 12,
+    //gutters: 0,
+    column-width: rem( 96 ), // No idea how, but outputs rem(24) gutter
+    gutter-position: inside-static,
+    global-box-sizing: border-box,
+    use-custom: (
+        rem: true,
+        box-sizing: false
+    )
+);
+
+// Include-media
+$breakpoints: (
+    'small': rem( 480 ), // small device maximum
+    'medium-small': rem( 700 ),
+    'medium': rem( 960 ), // medium device maximum
+    'large': rem( 1200 ), // large device maximum
+    'max-wrapper': $max-wrapper-width // max width of wrapper
+);
+$unit-intervals: (
+    'px': 1,
+    'em': 0.001,
+    'rem': 0.01
+);
+
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+
+// Base
+$color-white: hsl(196,100%,100%);
+$color-black: hsl(196,5%,10%);
+$color-base: hsl(14,12%,42%);
+$color-base-dark: hsl(14,12%,24%);
+$color-base-light: hsl(14,12%,60%);
+$color-base-faint: hsl(14,12%,90%);
+
+// States
+$color-positive: hsl(177,37%,57%);
+$color-negative: hsl(359,67%,66%);
+
+// Brand blue
+$color-a: hsl(196,100%,43%);
+$color-a-light: hsl(196,100%,55%);
+$color-a-faint: hsla(196,100%,43%,0.5);
+$color-a-dark: hsl(196,100%,38%);
+$color-a-washed: hsla(196,100%,70%,0.2);
+
+// Yellow
+$color-b: hsl(57,100%,50%);

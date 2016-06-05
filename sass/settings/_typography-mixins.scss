@@ -1,0 +1,119 @@
+/**
+ * Typography mixins
+ * =================
+ *
+ * Include all typography mixins, such as weights and heirarchy.
+ * Should not output any styles.
+ */
+
+
+// Imports
+@import "../vendor/bourbon/bourbon";
+@import "global-vars";
+@import "global-mixins";
+@import "typography-vars";
+
+
+/**
+ * Variants
+ *
+ * Better to use these mixins than applying direct font styling, to get more global control.
+ */
+
+@mixin light {
+    font-weight: 300;
+}
+
+@mixin regular {
+    font-weight: 400;
+}
+
+@mixin bold {
+    font-weight: 600;
+}
+
+@mixin heavy {
+    font-weight: 700;
+}
+
+@mixin italic {
+    font-style: italic;
+}
+
+@mixin normal {
+    font-style: normal;
+}
+
+
+/**
+ * Heirarchy
+ *
+ * Relates to typography vars.
+ * Include adjustments to tracking within mixins.
+ */
+
+// -2
+@mixin mini {
+    font-size: rem( $size-mini );
+    line-height: rem( $leading-mini );
+    letter-spacing: 0;
+}
+
+// -1
+@mixin small {
+    font-size: rem( $size-small );
+    line-height: rem( $leading-small );
+    letter-spacing: 0;
+}
+
+// 0
+@mixin base {
+    font-size: rem( $size-base );
+    line-height: rem( $leading-base );
+    letter-spacing: 0;
+}
+
+// 1
+@mixin delta {
+    font-size: rem( $size-delta );
+    line-height: rem( $leading-delta );
+    letter-spacing: -0.01em;
+}
+
+// 2
+@mixin gamma {
+    font-size: rem( $size-gamma );
+    line-height: rem( $leading-gamma );
+    letter-spacing: -0.01em;
+}
+
+// 3
+@mixin beta {
+    font-size: rem( $size-beta );
+    line-height: rem( $leading-beta );
+    letter-spacing: -0.01em;
+}
+
+// 4
+@mixin alpha {
+    font-size: rem( $size-alpha );
+    line-height: rem( $leading-alpha );
+    letter-spacing: -0.02em;
+}
+
+
+/**/
+
+
+@mixin ellipsis( $max-width: 100% ) {
+    max-width: $max-width;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+@mixin punctuation {
+    font-family: $face-punctuation;
+    @include italic;
+}

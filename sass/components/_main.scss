@@ -1,0 +1,34 @@
+/**
+ * Main
+ * ====
+ *
+ * Main view component
+ * Includes flyout side view
+ */
+
+
+// Imports
+@import "../vendor/bourbon/bourbon";
+@import "../vendor/susy/susy";
+@import "../settings/global-vars";
+@import "../settings/global-mixins";
+@import "../settings/typography-vars";
+@import "../settings/typography-mixins";
+
+
+.main {
+    @include container;
+}
+
+.main__body {
+    @include span( 8 );
+    padding-top: rem( $v-gutter * 3 );
+    padding-bottom: rem( $v-gutter * 3 );
+}
+
+.main__side {
+    @include span( 3 );
+    @include push( 1 );
+    padding-top: rem( $v-gutter * 4 );
+    padding-bottom: rem( $v-gutter * 4 );
+}

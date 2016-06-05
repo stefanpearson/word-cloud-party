@@ -1,0 +1,24 @@
+/**
+ * Animation
+ * =========
+ *
+ * Reusable keyframe animations
+ */
+
+
+// Imports
+@import "../vendor/bourbon/bourbon";
+@import "../settings/global-vars";
+@import "../settings/global-mixins";
+
+
+@include keyframes( spin ) {
+
+    0% {
+        @include transform( rotate( 0deg ) );
+    }
+
+    100% {
+        @include transform( rotate( 360deg ) );
+    }
+}

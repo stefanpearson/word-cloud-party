@@ -1,0 +1,72 @@
+/**
+ * Sentiment
+ * =========
+ *
+ * Sentiment badge component
+ */
+
+
+// Imports
+@import "../vendor/bourbon/bourbon";
+@import "../settings/global-vars";
+@import "../settings/global-mixins";
+@import "../settings/typography-vars";
+@import "../settings/typography-mixins";
+
+
+.sentiment {
+    text-align: center;
+}
+
+.sentiment__icon {
+    display: inline-block;
+
+    &:before {
+        display: block;
+        width: rem( $leading-base );
+        font-size: rem( $size-gamma );
+        color: $color-white;
+        border-radius: rem( $leading-base / 2);
+        @include ellipsis;
+        @include bold;
+    }
+}
+
+.sentiment__value {
+    display: block;
+    @include small;
+    @include bold;
+}
+
+.sentiment--positive {
+
+    .sentiment__icon {
+
+        &:before {
+            content: '+';
+            background-color: $color-positive;
+        }
+    }
+}
+
+.sentiment--neutral {
+
+    .sentiment__icon {
+
+        &:before {
+            content: '=';
+            background-color: $color-base-light;
+        }
+    }
+}
+
+.sentiment--negative {
+
+    .sentiment__icon {
+
+        &:before {
+            content: '–';
+            background-color: $color-negative;
+        }
+    }
+}

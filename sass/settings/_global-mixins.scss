@@ -1,0 +1,75 @@
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+
+
+// Imports
+@import "../vendor/bourbon/bourbon";
+@import "../vendor/susy/susy";
+@import "global-vars";
+
+
+@mixin maintain-aspect-ratio( $width-factor ) {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100% / $width-factor;
+}
+
+@mixin maintain-aspect-ratio-top( $width-factor ) {
+    width: 100%;
+    height: 0;
+    padding-top: 100% / $width-factor;
+}
+
+@mixin font-face($family-name, $path, $font-weight: normal, $font-style: normal) {
+    @font-face {
+        font-family: $family-name;
+        src: url("#{$font-path}#{$path}.eot?#iefix");
+        src: url("#{$font-path}#{$path}.eot?#iefix") format("eot"),
+             url("#{$font-path}#{$path}.ttf") format("truetype"),
+             url("#{$font-path}#{$path}.woff") format("woff"),
+             url("#{$font-path}#{$path}.svg##{$path}") format("svg");
+        font-weight: $font-weight;
+        font-style: $font-style;
+    }
+}
+
+@mixin pseudo-element() {
+    display: block;
+    position: absolute;
+    content: "\0020";
+}
+
+@mixin background-image( $background-image ) {
+    background-image: url(#{$image-path}#{$background-image});
+}
+
+@mixin clip-path( $value ) {
+    -webkit-clip-path: $value;
+    -moz-clip-path: $value;
+    clip-path: $value;
+}
+
+@mixin accelerate {
+    -webkit-transform: translate3d(0,0,0);
+    @include backface-visibility( hidden );
+}
+
+@mixin has-gutters {
+    padding-right: rem( $h-gutter / 2 );
+    padding-left: rem( $h-gutter / 2 );
+}
+
+@mixin bleed-out {
+    margin-left: rem( -$h-gutter );
+    margin-right: rem( -$h-gutter );
+}
+
+@mixin bleed-out-half {
+    margin-left: rem( $h-gutter * (-1/2) );
+    margin-right: rem( $h-gutter * (-1/2) );
+}

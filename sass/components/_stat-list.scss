@@ -1,0 +1,27 @@
+/**
+ * Stat list
+ * =========
+ *
+ * Stat list component used for showing a list of icons and values
+ */
+
+
+// Imports
+@import "../vendor/bourbon/bourbon";
+@import "../settings/global-vars";
+@import "../settings/global-mixins";
+@import "../settings/typography-vars";
+@import "../settings/typography-mixins";
+
+
+.stat-list {
+
+    &:not(:last-child) {
+        margin-bottom: rem( $y-unit * 4 );
+    }
+}
+
+.stat-list__item {
+    display: inline-block;
+    margin-right: rem( $h-gutter );
+}

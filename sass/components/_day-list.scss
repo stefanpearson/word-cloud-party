@@ -1,0 +1,35 @@
+/**
+ * Day list
+ * ===========
+ *
+ * A list of days
+ */
+
+
+// Imports
+@import "../vendor/bourbon/bourbon";
+@import "../settings/global-vars";
+@import "../settings/global-mixins";
+@import "../settings/typography-vars";
+@import "../settings/typography-mixins";
+
+
+.day-list {
+
+    .day-list__item {
+        @include display( flex );
+        @include align-items( center );
+        @include justify-content( center );
+    }
+
+    .day-list__item__label {
+        width: 2em;
+        margin-right: rem( $x-unit * 2 );
+        font-family: Poly;
+        @include italic;
+    }
+
+    .day-list__item__value {
+        @include flex( 1 );
+    }
+}

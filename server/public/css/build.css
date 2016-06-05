@@ -1,0 +1,2823 @@
+@charset "UTF-8";
+/**
+ * Seed
+ * ====
+ *
+ * Contents:
+ * ---------
+ *
+ * /settings
+ * global-vars ............. Global variables
+ * global-mixins ........... Global mixins
+ * typography-vars ......... Typography variables including typefaces and scales
+ * typography-mixins ....... Typography mixins
+ *
+ * /core
+ * animation ............... Animation keyframes
+ * defaults ................ Browser reset
+ * typography .............. Base typography
+ * screen .................. Base screen layout
+ *
+ * /components
+ * a ....................... Common anchor styles
+ * day-list ................ Day list
+ * header .................. Header
+ * main .................... Main view
+ * media ................... Media (image, video, embed)
+ * wrapper ................. Wrapper
+ */
+/**
+ * Animation
+ * =========
+ *
+ * Reusable keyframe animations
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg); } }
+
+@-moz-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg); }
+  100% {
+    -moz-transform: rotate(360deg); } }
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+/**
+ * Defaults
+ * ========
+ *
+ * Reset default browser styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+* {
+  padding: 0;
+  border: 0;
+  margin: 0;
+  outline: none;
+  -webkit-border-radius: 0;
+  -webkit-appearance: none;
+  box-sizing: border-box; }
+
+html,
+body {
+  width: 100%; }
+
+body {
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none; }
+
+address,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+input,
+textarea,
+select,
+label,
+img {
+  display: block; }
+
+ul {
+  list-style: none; }
+
+a {
+  text-decoration: none; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 1em;
+  font-weight: normal; }
+
+h1:empty,
+h2:empty,
+h3:empty,
+h4:empty,
+h5:empty,
+h6:empty,
+p:empty,
+li:empty,
+blockquote:empty {
+  display: none; }
+
+cite {
+  font-style: normal; }
+
+address {
+  font-style: normal; }
+
+img {
+  max-width: 100%;
+  width: auto;
+  height: auto; }
+
+a img {
+  border: none; }
+
+input,
+textarea {
+  background-color: transparent;
+  -webkit-user-select: auto; }
+
+input[type="submit"] {
+  cursor: pointer; }
+
+textarea {
+  resize: none; }
+
+select {
+  background-color: transparent; }
+
+table {
+  border-collapse: collapse; }
+
+.clear {
+  clear: both; }
+
+.clearfix:before, .clearfix:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  overflow: hidden; }
+
+.clearfix:after {
+  clear: both; }
+
+.acceleration-on {
+  display: block;
+  position: absolute;
+  content: "\0020";
+  bottom: 0;
+  right: 0;
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden; }
+
+/**
+ * Screen
+ * ======
+ *
+ * Base screen styles (basic page layout and scale).
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/*
+ * Typography config
+ * =================
+ *
+ * Include all typography vars including typefaces and scale.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Heirarchy
+ *
+ * Baseline grid: 6
+ * Modular scale: 1.25
+ * All leading to be multiples of the baseline grid unit.
+ */
+/**
+ * Typography mixins
+ * =================
+ *
+ * Include all typography mixins, such as weights and heirarchy.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/*
+ * Typography config
+ * =================
+ *
+ * Include all typography vars including typefaces and scale.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Heirarchy
+ *
+ * Baseline grid: 6
+ * Modular scale: 1.25
+ * All leading to be multiples of the baseline grid unit.
+ */
+/**
+ * Variants
+ *
+ * Better to use these mixins than applying direct font styling, to get more global control.
+ */
+/**
+ * Heirarchy
+ *
+ * Relates to typography vars.
+ * Include adjustments to tracking within mixins.
+ */
+/**/
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; }
+
+html,
+body,
+.bounds {
+  min-height: 100%; }
+
+.loading * {
+  -webkit-transition-property: none !important;
+  -moz-transition-property: none !important;
+  -ms-transition-property: none !important;
+  -o-transition-property: none !important;
+  transition-property: none !important; }
+
+.bounds {
+  position: relative;
+  overflow-x: hidden; }
+
+/**
+ * Typography
+ * ==========
+ *
+ * Base typography styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/*
+ * Typography config
+ * =================
+ *
+ * Include all typography vars including typefaces and scale.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Heirarchy
+ *
+ * Baseline grid: 6
+ * Modular scale: 1.25
+ * All leading to be multiples of the baseline grid unit.
+ */
+/**
+ * Typography mixins
+ * =================
+ *
+ * Include all typography mixins, such as weights and heirarchy.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/*
+ * Typography config
+ * =================
+ *
+ * Include all typography vars including typefaces and scale.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Heirarchy
+ *
+ * Baseline grid: 6
+ * Modular scale: 1.25
+ * All leading to be multiples of the baseline grid unit.
+ */
+/**
+ * Variants
+ *
+ * Better to use these mixins than applying direct font styling, to get more global control.
+ */
+/**
+ * Heirarchy
+ *
+ * Relates to typography vars.
+ * Include adjustments to tracking within mixins.
+ */
+/**/
+body,
+input,
+textarea,
+select {
+  font-family: Roboto, HelveticaNeue, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6875rem;
+  letter-spacing: 0;
+  font-weight: 400;
+  color: #78645e;
+  font-smooth: always;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-variant-ligatures: common-ligatures;
+  font-variant-ligatures: common-ligatures; }
+
+a {
+  color: #008ec2; }
+
+b,
+strong {
+  font-weight: 600; }
+
+i,
+em {
+  font-style: italic; }
+
+::selection {
+  background-color: #00a1db;
+  color: white; }
+
+/**
+ * A
+ * =
+ *
+ * Common anchor styles
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/*
+ * Typography config
+ * =================
+ *
+ * Include all typography vars including typefaces and scale.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Heirarchy
+ *
+ * Baseline grid: 6
+ * Modular scale: 1.25
+ * All leading to be multiples of the baseline grid unit.
+ */
+/**
+ * Typography mixins
+ * =================
+ *
+ * Include all typography mixins, such as weights and heirarchy.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/*
+ * Typography config
+ * =================
+ *
+ * Include all typography vars including typefaces and scale.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Heirarchy
+ *
+ * Baseline grid: 6
+ * Modular scale: 1.25
+ * All leading to be multiples of the baseline grid unit.
+ */
+/**
+ * Variants
+ *
+ * Better to use these mixins than applying direct font styling, to get more global control.
+ */
+/**
+ * Heirarchy
+ *
+ * Relates to typography vars.
+ * Include adjustments to tracking within mixins.
+ */
+/**/
+.a {
+  color: inherit;
+  border-color: rgba(102, 214, 255, 0.2);
+  border-style: solid;
+  box-shadow: inset 0 -0.18em 0 rgba(102, 214, 255, 0.2);
+  -webkit-transition-property: background-color;
+  -moz-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 0.066s;
+  -moz-transition-duration: 0.066s;
+  transition-duration: 0.066s;
+  -webkit-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out; }
+  .a:hover {
+    background-color: rgba(102, 214, 255, 0.2); }
+
+/**
+ * Bar
+ * ===
+ *
+ * Bar styles
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/*
+ * Typography config
+ * =================
+ *
+ * Include all typography vars including typefaces and scale.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Heirarchy
+ *
+ * Baseline grid: 6
+ * Modular scale: 1.25
+ * All leading to be multiples of the baseline grid unit.
+ */
+/**
+ * Typography mixins
+ * =================
+ *
+ * Include all typography mixins, such as weights and heirarchy.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/*
+ * Typography config
+ * =================
+ *
+ * Include all typography vars including typefaces and scale.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Heirarchy
+ *
+ * Baseline grid: 6
+ * Modular scale: 1.25
+ * All leading to be multiples of the baseline grid unit.
+ */
+/**
+ * Variants
+ *
+ * Better to use these mixins than applying direct font styling, to get more global control.
+ */
+/**
+ * Heirarchy
+ *
+ * Relates to typography vars.
+ * Include adjustments to tracking within mixins.
+ */
+/**/
+.bar {
+  padding-right: 0.5625rem;
+  padding-left: 0.5625rem; }
+
+.bar__value {
+  position: relative;
+  width: 0;
+  height: 1.125rem;
+  background-color: #e9e4e2; }
+  .bar__value:before, .bar__value:after {
+    display: block;
+    position: absolute;
+    content: "\0020";
+    top: 0;
+    bottom: 0;
+    width: 0.5625rem;
+    background-color: inherit; }
+  .bar__value:before {
+    right: 100%;
+    border-top-left-radius: 0.5625rem;
+    border-bottom-left-radius: 0.5625rem; }
+  .bar__value:after {
+    left: 100%;
+    border-top-right-radius: 0.5625rem;
+    border-bottom-right-radius: 0.5625rem; }
+
+.bar__label {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  right: -0.25em;
+  font-size: 0.72rem;
+  line-height: 1.125rem; }
+
+/**
+ * Day list
+ * ===========
+ *
+ * A list of days
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/*
+ * Typography config
+ * =================
+ *
+ * Include all typography vars including typefaces and scale.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Heirarchy
+ *
+ * Baseline grid: 6
+ * Modular scale: 1.25
+ * All leading to be multiples of the baseline grid unit.
+ */
+/**
+ * Typography mixins
+ * =================
+ *
+ * Include all typography mixins, such as weights and heirarchy.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/*
+ * Typography config
+ * =================
+ *
+ * Include all typography vars including typefaces and scale.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Heirarchy
+ *
+ * Baseline grid: 6
+ * Modular scale: 1.25
+ * All leading to be multiples of the baseline grid unit.
+ */
+/**
+ * Variants
+ *
+ * Better to use these mixins than applying direct font styling, to get more global control.
+ */
+/**
+ * Heirarchy
+ *
+ * Relates to typography vars.
+ * Include adjustments to tracking within mixins.
+ */
+/**/
+.day-list .day-list__item {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  box-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  box-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center; }
+
+.day-list .day-list__item__label {
+  width: 2em;
+  margin-right: 0.75rem;
+  font-family: Poly;
+  font-style: italic; }
+
+.day-list .day-list__item__value {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex: 1;
+  -moz-flex: 1;
+  -ms-flex: 1;
+  flex: 1; }
+
+/**
+ * Header
+ * ======
+ *
+ * Header styles
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/*
+ * Typography config
+ * =================
+ *
+ * Include all typography vars including typefaces and scale.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Heirarchy
+ *
+ * Baseline grid: 6
+ * Modular scale: 1.25
+ * All leading to be multiples of the baseline grid unit.
+ */
+/**
+ * Typography mixins
+ * =================
+ *
+ * Include all typography mixins, such as weights and heirarchy.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/*
+ * Typography config
+ * =================
+ *
+ * Include all typography vars including typefaces and scale.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Heirarchy
+ *
+ * Baseline grid: 6
+ * Modular scale: 1.25
+ * All leading to be multiples of the baseline grid unit.
+ */
+/**
+ * Variants
+ *
+ * Better to use these mixins than applying direct font styling, to get more global control.
+ */
+/**
+ * Heirarchy
+ *
+ * Relates to typography vars.
+ * Include adjustments to tracking within mixins.
+ */
+/**/
+.header:not(:last-child) {
+  margin-bottom: 2.25rem; }
+
+.header h1 {
+  font-size: 2.74656rem;
+  line-height: 3.375rem;
+  letter-spacing: -0.02em;
+  font-family: Poly;
+  font-style: italic; }
+
+/**
+ * Main
+ * ====
+ *
+ * Main view component
+ * Includes flyout side view
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/*
+ * Typography config
+ * =================
+ *
+ * Include all typography vars including typefaces and scale.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Heirarchy
+ *
+ * Baseline grid: 6
+ * Modular scale: 1.25
+ * All leading to be multiples of the baseline grid unit.
+ */
+/**
+ * Typography mixins
+ * =================
+ *
+ * Include all typography mixins, such as weights and heirarchy.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/*
+ * Typography config
+ * =================
+ *
+ * Include all typography vars including typefaces and scale.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Heirarchy
+ *
+ * Baseline grid: 6
+ * Modular scale: 1.25
+ * All leading to be multiples of the baseline grid unit.
+ */
+/**
+ * Variants
+ *
+ * Better to use these mixins than applying direct font styling, to get more global control.
+ */
+/**
+ * Heirarchy
+ *
+ * Relates to typography vars.
+ * Include adjustments to tracking within mixins.
+ */
+/**/
+.main {
+  max-width: 90rem;
+  margin-left: auto;
+  margin-right: auto; }
+  .main:after {
+    content: " ";
+    display: block;
+    clear: both; }
+
+.main__body {
+  width: 66.66667%;
+  float: left;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 3.375rem;
+  padding-bottom: 3.375rem; }
+
+.main__side {
+  width: 25%;
+  float: left;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin-left: 8.33333%;
+  padding-top: 4.5rem;
+  padding-bottom: 4.5rem; }
+
+/**
+ * Section header
+ * ==============
+ *
+ * Section header component
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/*
+ * Typography config
+ * =================
+ *
+ * Include all typography vars including typefaces and scale.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Heirarchy
+ *
+ * Baseline grid: 6
+ * Modular scale: 1.25
+ * All leading to be multiples of the baseline grid unit.
+ */
+/**
+ * Typography mixins
+ * =================
+ *
+ * Include all typography mixins, such as weights and heirarchy.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/*
+ * Typography config
+ * =================
+ *
+ * Include all typography vars including typefaces and scale.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Heirarchy
+ *
+ * Baseline grid: 6
+ * Modular scale: 1.25
+ * All leading to be multiples of the baseline grid unit.
+ */
+/**
+ * Variants
+ *
+ * Better to use these mixins than applying direct font styling, to get more global control.
+ */
+/**
+ * Heirarchy
+ *
+ * Relates to typography vars.
+ * Include adjustments to tracking within mixins.
+ */
+/**/
+.section-header {
+  position: relative;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  box-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  box-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  font-size: 1.40625rem;
+  line-height: 2.0625rem;
+  letter-spacing: -0.01em; }
+  .section-header:not(:last-child) {
+    margin-bottom: 2.25rem; }
+  .section-header:after {
+    display: block;
+    position: absolute;
+    content: "\0020";
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 0.375rem;
+    background-color: #fff200; }
+
+.section-header__label {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex: 1;
+  -moz-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 600; }
+
+/**
+ * Sentiment
+ * =========
+ *
+ * Sentiment badge component
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/*
+ * Typography config
+ * =================
+ *
+ * Include all typography vars including typefaces and scale.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Heirarchy
+ *
+ * Baseline grid: 6
+ * Modular scale: 1.25
+ * All leading to be multiples of the baseline grid unit.
+ */
+/**
+ * Typography mixins
+ * =================
+ *
+ * Include all typography mixins, such as weights and heirarchy.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/*
+ * Typography config
+ * =================
+ *
+ * Include all typography vars including typefaces and scale.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Heirarchy
+ *
+ * Baseline grid: 6
+ * Modular scale: 1.25
+ * All leading to be multiples of the baseline grid unit.
+ */
+/**
+ * Variants
+ *
+ * Better to use these mixins than applying direct font styling, to get more global control.
+ */
+/**
+ * Heirarchy
+ *
+ * Relates to typography vars.
+ * Include adjustments to tracking within mixins.
+ */
+/**/
+.sentiment {
+  text-align: center; }
+
+.sentiment__icon {
+  display: inline-block; }
+  .sentiment__icon:before {
+    display: block;
+    width: 1.6875rem;
+    font-size: 1.75781rem;
+    color: white;
+    border-radius: 0.84375rem;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 600; }
+
+.sentiment__value {
+  display: block;
+  font-size: 0.9rem;
+  line-height: 1.3125rem;
+  letter-spacing: 0;
+  font-weight: 600; }
+
+.sentiment--positive .sentiment__icon:before {
+  content: '+';
+  background-color: #69bab6; }
+
+.sentiment--neutral .sentiment__icon:before {
+  content: '=';
+  background-color: #a5928d; }
+
+.sentiment--negative .sentiment__icon:before {
+  content: '–';
+  background-color: #e26e70; }
+
+/**
+ * Sentiment score
+ * ===============
+ *
+ * Overall sentiment score component
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/*
+ * Typography config
+ * =================
+ *
+ * Include all typography vars including typefaces and scale.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Heirarchy
+ *
+ * Baseline grid: 6
+ * Modular scale: 1.25
+ * All leading to be multiples of the baseline grid unit.
+ */
+/**
+ * Typography mixins
+ * =================
+ *
+ * Include all typography mixins, such as weights and heirarchy.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/*
+ * Typography config
+ * =================
+ *
+ * Include all typography vars including typefaces and scale.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Heirarchy
+ *
+ * Baseline grid: 6
+ * Modular scale: 1.25
+ * All leading to be multiples of the baseline grid unit.
+ */
+/**
+ * Variants
+ *
+ * Better to use these mixins than applying direct font styling, to get more global control.
+ */
+/**
+ * Heirarchy
+ *
+ * Relates to typography vars.
+ * Include adjustments to tracking within mixins.
+ */
+/**/
+.sentiment-score:after {
+  margin-left: 0.1em;
+  content: '%'; }
+
+/**
+ * Stat list
+ * =========
+ *
+ * Stat list component used for showing a list of icons and values
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/*
+ * Typography config
+ * =================
+ *
+ * Include all typography vars including typefaces and scale.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Heirarchy
+ *
+ * Baseline grid: 6
+ * Modular scale: 1.25
+ * All leading to be multiples of the baseline grid unit.
+ */
+/**
+ * Typography mixins
+ * =================
+ *
+ * Include all typography mixins, such as weights and heirarchy.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/*
+ * Typography config
+ * =================
+ *
+ * Include all typography vars including typefaces and scale.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Heirarchy
+ *
+ * Baseline grid: 6
+ * Modular scale: 1.25
+ * All leading to be multiples of the baseline grid unit.
+ */
+/**
+ * Variants
+ *
+ * Better to use these mixins than applying direct font styling, to get more global control.
+ */
+/**
+ * Heirarchy
+ *
+ * Relates to typography vars.
+ * Include adjustments to tracking within mixins.
+ */
+/**/
+.stat-list:not(:last-child) {
+  margin-bottom: 1.5rem; }
+
+.stat-list__item {
+  display: inline-block;
+  margin-right: 1.5rem; }
+
+/**
+ * Word
+ * ====
+ *
+ * Word component
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/*
+ * Typography config
+ * =================
+ *
+ * Include all typography vars including typefaces and scale.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Heirarchy
+ *
+ * Baseline grid: 6
+ * Modular scale: 1.25
+ * All leading to be multiples of the baseline grid unit.
+ */
+/**
+ * Typography mixins
+ * =================
+ *
+ * Include all typography mixins, such as weights and heirarchy.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/*
+ * Typography config
+ * =================
+ *
+ * Include all typography vars including typefaces and scale.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Heirarchy
+ *
+ * Baseline grid: 6
+ * Modular scale: 1.25
+ * All leading to be multiples of the baseline grid unit.
+ */
+/**
+ * Variants
+ *
+ * Better to use these mixins than applying direct font styling, to get more global control.
+ */
+/**
+ * Heirarchy
+ *
+ * Relates to typography vars.
+ * Include adjustments to tracking within mixins.
+ */
+/**/
+.word {
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+  margin-right: 0.4em;
+  font-size: 1.75781rem;
+  line-height: 2.4375rem;
+  letter-spacing: -0.01em;
+  word-break: nowrap;
+  cursor: pointer; }
+  .word:hover:before {
+    z-index: -1;
+    display: block;
+    position: absolute;
+    content: "\0020";
+    top: 0;
+    right: -0.25em;
+    bottom: 0;
+    left: -0.25em;
+    background-color: #fff200;
+    opacity: 0.35; }
+
+.word--positive {
+  color: #69bab6; }
+
+.word--negative {
+  color: #e26e70; }
+
+.word--1 {
+  font-weight: 900; }
+
+.word--2 {
+  font-weight: 700; }
+
+.word--3 {
+  font-weight: 500; }
+
+.word--4 {
+  font-weight: 400; }
+
+.word--5 {
+  font-weight: 300; }
+
+.word--6 {
+  font-weight: 100; }
+
+/**
+ * Wrapper
+ * =======
+ *
+ * Wrapper component, used to constrain layout.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+/**
+ * Global mixins
+ * =============
+ *
+ * Include global reusable mixins.
+ * Should not output any styles.
+ */
+/**
+ * Global variables
+ * ================
+ *
+ * Include global settings such as units and colour palette.
+ * Should not output any styles.
+ */
+/**
+ * Color palette
+ *
+ * Use human-friendly HSL
+ * Converter helper tool: http://hslpicker.com
+ */
+.wrapper {
+  position: relative;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 3rem; }
+  @media (max-width: 39.999em) {
+    .wrapper {
+      padding: 0 1.5rem; } }

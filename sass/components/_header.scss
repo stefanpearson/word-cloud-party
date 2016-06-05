@@ -1,0 +1,29 @@
+/**
+ * Header
+ * ======
+ *
+ * Header styles
+ */
+
+
+// Imports
+@import "../vendor/bourbon/bourbon";
+@import "../settings/global-vars";
+@import "../settings/global-mixins";
+@import "../settings/typography-vars";
+@import "../settings/typography-mixins";
+
+
+.header {
+
+    &:not(:last-child) {
+        margin-bottom: rem( $v-gutter * 2 );
+    }
+
+    h1 {
+        @include alpha;
+        //@include bold;
+        font-family: Poly;
+        @include italic;
+    }
+}

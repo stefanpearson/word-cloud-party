@@ -1,0 +1,41 @@
+/**
+ * Screen
+ * ======
+ *
+ * Base screen styles (basic page layout and scale).
+ */
+
+
+// Imports
+@import "../vendor/bourbon/bourbon";
+@import "../vendor/include-media";
+@import "../settings/global-vars";
+@import "../settings/global-mixins";
+@import "../settings/typography-vars";
+@import "../settings/typography-mixins";
+
+
+// Scale
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+html,
+body,
+.bounds {
+    min-height: 100%;
+}
+
+.loading * {
+    -webkit-transition-property: none !important;
+    -moz-transition-property: none !important;
+    -ms-transition-property: none !important;
+    -o-transition-property: none !important;
+    transition-property: none !important;
+}
+
+.bounds {
+    position: relative;
+    overflow-x: hidden;
+}

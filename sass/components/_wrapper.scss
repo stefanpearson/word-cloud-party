@@ -1,0 +1,24 @@
+/**
+ * Wrapper
+ * =======
+ *
+ * Wrapper component, used to constrain layout.
+ */
+
+
+// Imports
+@import "../vendor/include-media";
+@import "../settings/global-vars";
+@import "../settings/global-mixins";
+
+
+.wrapper {
+    position: relative;
+    max-width: $max-wrapper-width;
+    margin: 0 auto;
+    padding: 0 rem( $h-gutter * 2 );
+
+    @include media( '<40em' ) {
+        padding: 0 rem( $h-gutter );
+    }
+}

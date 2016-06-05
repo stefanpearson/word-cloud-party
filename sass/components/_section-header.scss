@@ -1,0 +1,42 @@
+/**
+ * Section header
+ * ==============
+ *
+ * Section header component
+ */
+
+
+// Imports
+@import "../vendor/bourbon/bourbon";
+@import "../settings/global-vars";
+@import "../settings/global-mixins";
+@import "../settings/typography-vars";
+@import "../settings/typography-mixins";
+
+
+.section-header {
+    position: relative;
+    @include display( flex );
+    @include align-items( center );
+    @include justify-content( center );
+    @include delta;
+
+    &:not(:last-child) {
+        margin-bottom: rem( $v-gutter * 2 );
+    }
+
+    &:after {
+        @include pseudo-element;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: rem( 6 );
+        background-color: $color-b;
+    }
+}
+
+.section-header__label {
+    @include flex( 1 );
+    @include ellipsis;
+    @include bold;
+}

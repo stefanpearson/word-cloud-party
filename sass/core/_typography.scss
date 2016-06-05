@@ -1,0 +1,50 @@
+/**
+ * Typography
+ * ==========
+ *
+ * Base typography styles.
+ */
+
+
+// Imports
+@import "../vendor/bourbon/bourbon";
+@import "../settings/global-vars";
+@import "../settings/global-mixins";
+@import "../settings/typography-vars";
+@import "../settings/typography-mixins";
+
+
+body,
+input,
+textarea,
+select {
+    font-family: $face-a;
+    @include base;
+    @include regular;
+    color: $color-base;
+    font-smooth: always;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-variant-ligatures: common-ligatures;
+    font-variant-ligatures: common-ligatures;
+}
+
+a {
+    color: $color-a-dark;
+}
+
+b,
+strong {
+    @include bold;
+}
+
+i,
+em {
+    @include italic;
+}
+
+::selection {
+    background-color: $color-a;
+    color: $color-white;
+}

@@ -1,0 +1,46 @@
+/*
+ * Typography config
+ * =================
+ *
+ * Include all typography vars including typefaces and scale.
+ */
+
+
+// Imports
+@import "../vendor/bourbon/bourbon";
+@import "global-vars";
+@import "global-mixins";
+
+
+// Typefaces
+$face-a: Roboto, HelveticaNeue, sans-serif;
+$face-punctuation: Baskerville, serif;
+
+/**
+ * Heirarchy
+ *
+ * Baseline grid: 6
+ * Modular scale: 1.25
+ * All leading to be multiples of the baseline grid unit.
+ */
+
+$size-mini: 11.52;
+$leading-mini: 15;
+
+$size-small: 14.4;
+$leading-small: 21; // Magic number
+
+$size-base: 18;
+$leading-base: 27;
+
+$size-delta: 22.5;
+$leading-delta: 33;
+
+$size-gamma: 28.125;
+$leading-gamma: 39;
+
+$size-beta: 35.156;
+$leading-beta: 45;
+
+$size-alpha: 43.945;
+$leading-alpha: 54;
