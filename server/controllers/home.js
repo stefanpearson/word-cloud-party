@@ -26,7 +26,7 @@ var requestGetHome = function requestGetHome( request, response ) {
   response = utils.promisify( response );
 
   return response.renderPromise( 'shell.html', {
-    layout: 'layouts/cloud.html',
+    layout: 'layouts/static.html',
     document: {
       title: 'Word Cloud Party',
       description: '…'

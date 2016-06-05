@@ -9,4 +9,5 @@ var topicProvider = require( './data/topics' );
 topicProvider.get()
   .then( function( topics ) {
     console.log( 'Got the topics!', topics );
+    console.log( 'lol' );
   } );
