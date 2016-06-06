@@ -20,7 +20,7 @@
     position: relative;
     vertical-align: top;
     margin-right: 0.4em;
-    @include gamma;
+    @include beta;
     word-break: nowrap;
     cursor: pointer;
 
@@ -43,12 +43,18 @@
         }
     }
 
-    &:active,
+    &:active {
+
+        &:before {
+            opacity: 1;
+        }
+    }
+
     &.is-active {
 
         &:before,
         &:hover:before {
-            opacity: 0.8;
+            opacity: 0.7;
         }
     }
 }

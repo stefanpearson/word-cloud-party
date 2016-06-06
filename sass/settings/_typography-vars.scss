@@ -14,8 +14,8 @@
 
 // Typefaces
 $face-a: Roboto, HelveticaNeue, sans-serif;
-$face-b: Poly, Baskerville, serif;
-$face-punctuation: Baskerville, serif;
+$face-b: Baskerville, Didot, Georgia, serif;
+$face-punctuation: $face-b;
 
 /**
  * Heirarchy
@@ -48,3 +48,9 @@ $leading-beta: 45;
 
 $size-alpha: 43.945;
 $leading-alpha: 54;
+
+$size-mega: 54.932;
+$leading-mega: 69;
+
+$size-feature: 68.665;
+$leading-feature: 75;

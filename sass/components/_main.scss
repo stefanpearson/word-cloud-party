@@ -29,6 +29,6 @@
 .main__side {
     @include span( 3 );
     @include push( 1 );
-    padding-top: rem( $v-gutter * 4 );
-    padding-bottom: rem( $v-gutter * 4 );
+    padding-top: rem( $v-gutter * 5 );
+    padding-bottom: rem( $v-gutter * 5 );
 }

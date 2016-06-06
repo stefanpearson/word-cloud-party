@@ -21,8 +21,8 @@
     }
 
     h1 {
-        font-family: $face-b;
-        @include alpha;
+        font-family: $face-punctuation;
+        @include feature;
         @include italic;
     }
 }

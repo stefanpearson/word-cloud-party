@@ -39,4 +39,5 @@
     @include flex( 1 );
     @include ellipsis;
     @include bold;
+    padding-right: rem( $x-unit * 2 );
 }

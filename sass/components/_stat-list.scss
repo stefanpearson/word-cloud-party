@@ -15,6 +15,9 @@
 
 
 .stat-list {
+    @include display( flex );
+    @include align-items( center );
+    @include justify-content( flex-start );
 
     &:not(:last-child) {
         margin-bottom: rem( $y-unit * 4 );
@@ -22,6 +25,5 @@
 }
 
 .stat-list__item {
-    display: inline-block;
     margin-right: rem( $h-gutter );
 }

@@ -108,6 +108,13 @@
     letter-spacing: -0.02em;
 }
 
+// 6
+@mixin feature {
+    font-size: rem( $size-feature );
+    line-height: rem( $leading-feature );
+    letter-spacing: -0.02em;
+}
+
 
 /**/
 

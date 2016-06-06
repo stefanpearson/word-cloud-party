@@ -18,7 +18,7 @@ var WordCloudWord = React.createClass( {
    */
   getInitialState: function getInitialState() {
     return {
-      isActive: false
+      isActive: TopicStore.getState().activeTopicId == this.props.id
     };
   },
 

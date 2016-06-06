@@ -29,7 +29,13 @@ TopicStore.prototype = {
    * Handle update of the topics
    */
   handleUpdateTopics: function handleUpdateTopics( topics ) {
+
     this.topics = topics;
+
+    if ( this.activeTopicId === null && topics.length ) {
+      this.handleUpdateActiveTopicId( topics[ 0 ].id );
+    }
+
   },
 
   /**
