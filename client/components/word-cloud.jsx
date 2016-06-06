@@ -85,7 +85,6 @@ var WordCloud = React.createClass( {
 
     /**
      * Utility to sort topic IDs (by volume)
-     * TODO: move this to statics hash
      */
     sortTopicsByVolume: function cacheSortedTopicState( topics ) {
       return sortedIndexes = _.chain( topics )
@@ -101,7 +100,6 @@ var WordCloud = React.createClass( {
 
     /**
      * Utility to return the weight of a topic, relative to the collection
-     * TODO: move this to statics hash
      */
     getTopicWeight: function getTopicWeight( topic, sortedTopicIds ) {
       var index = _.indexOf( sortedTopicIds, topic.id ),
