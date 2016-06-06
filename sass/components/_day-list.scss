@@ -15,20 +15,25 @@
 
 
 .day-list {
+    //
+}
 
-    .day-list__item {
-        @include display( flex );
-        @include align-items( center );
-        @include justify-content( center );
-    }
+.day-list__item {
+    @include display( flex );
+    @include align-items( center );
+    @include justify-content( center );
 
-    .day-list__item__label {
-        width: 2em;
-        margin-right: rem( $x-unit * 2 );
-        @include italic;
+    &:not(:last-child) {
+        margin-bottom: rem( $y-unit );
     }
+}
 
-    .day-list__item__value {
-        @include flex( 1 );
-    }
+.day-list__item__label {
+    width: 2em;
+    margin-right: rem( $x-unit * 2 );
+    @include small;
+}
+
+.day-list__item__value {
+    @include flex( 1 );
 }

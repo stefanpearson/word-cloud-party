@@ -41,7 +41,7 @@ var init = function init() {
 
     // Start app
     server.listen( environment.port, function() {
-      logger.info( environment.project + ' running at ' + environment.protocol + ':' + environment.baseUrl );
+      logger.info( environment.project + ' running at ' + environment.baseUrl );
       return resolve();
     } );
 
