@@ -46,9 +46,12 @@ var MainDetail = React.createClass( {
    * Handle an update from the Topic Store
    */
   handleUpdatedTopicStore: function handleUpdatedTopicStore( topicStore ) {
-    if ( topicStore.activeTopicId && topicStore.topics.length ) {
-      this.setState( _.find( topicStore.topics, { id: topicStore.activeTopicId } ) );
+    var activeTopic = _.find( topicStore.topics, { id: topicStore.activeTopicId } );
+
+    if ( activeTopic ) {
+      this.setState( activeTopic );
     }
+
   },
 
   /**
