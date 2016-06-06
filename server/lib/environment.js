@@ -24,8 +24,9 @@ var environment = {
   },
   name: environmentName,
   protocol: process.env.PROTOCOL,
-  baseUrl: process.env.PROTOCOL + '://' + process.env.HOST,
+  host: process.env.HOST,
   port: process.env.PORT || process.env.port,
+  baseUrl: process.env.PROTOCOL + '://' + process.env.HOST,
   logLevel: process.env.LOG_LEVEL
 };
 

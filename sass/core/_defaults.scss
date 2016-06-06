@@ -20,6 +20,7 @@
     -webkit-border-radius: 0;
     -webkit-appearance: none;
     box-sizing: border-box;
+    cursor: inherit;
 }
 
 html,
@@ -31,6 +32,7 @@ body {
     position: relative;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-touch-callout: none;
+    cursor: default;
 }
 
 address,

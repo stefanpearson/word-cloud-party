@@ -4,10 +4,10 @@ var Promise = require( 'bluebird' ),
 
 
 // Dependencies
-var router = require( '../lib/router' ),
-    ResponseError = require( '../lib/response-error' ),
-    wrapResponse = require( '../lib/response-wrapper' ),
-    topicData = require( '../../data/topics' );
+var router = require( '../../lib/router' ),
+    ResponseError = require( '../../lib/response-error' ),
+    wrapResponse = require( '../../lib/response-wrapper' ),
+    topicData = require( '../../../data/topics' );
 
 
 var topicCollection = _.map( topicData.topics, function( topic ) {

@@ -7,7 +7,7 @@ var dotenv = require( 'dotenv' ),
     source = require( 'vinyl-source-stream' ),
     browserify = require( 'browserify' ),
     watchify = require( 'watchify' ),
-    reactify = require( 'reactify' ),
+    babelify = require( 'babelify' ),
     uglify = require( 'gulp-uglify' ),
     streamify = require( 'gulp-streamify' ),
     envify = require( 'envify' );
@@ -36,7 +36,7 @@ gulp.task( 'sass', function() {
 gulp.task( 'browserify', function() {
   var bundler = browserify( {
       entries: [ './client/index.js' ],
-      transform: [ reactify, envify ],
+      transform: [ babelify.configure( { presets: [ 'react' ] } ), envify ],
       extensions: [ '.jsx' ]
   } );
 

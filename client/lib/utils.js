@@ -7,12 +7,16 @@ var _ = require( 'lodash' );
 
 
 /**
- * Utility to output a list of class names
+ * Output a list of class names based on truthy hash values
  */
 var toClass = function toClass( hash ) {
   return _.reduce( hash, function( memo, value, key ) {
     if ( value ) {
-      memo = memo + ' ' + key;
+      if ( memo.length ) {
+        memo = memo + ' ' + key;
+      } else {
+        memo = key;
+      }
     }
     return memo;
   }, '' );

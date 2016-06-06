@@ -11,6 +11,10 @@ var MainBody = require( './main-body' ),
  * Main component
  */
 var Main = React.createClass( {
+
+  /**
+   * Render!
+   */
   render: function render() {
     return (
       <div className="wrapper">
@@ -21,6 +25,7 @@ var Main = React.createClass( {
       </div>
     );
   }
+
 } );
 
 

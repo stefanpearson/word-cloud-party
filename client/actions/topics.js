@@ -1,5 +1,5 @@
 // External dependencies
-//
+var _ = require( 'lodash' );
 
 
 // Dependencies
@@ -18,14 +18,10 @@ TopicActions.prototype = {
   /**
    * Fetch topics from data provider
    */
-  fetchTopics: function fetchTopics( dispatch ) {
-    return function( dispatch ) {
-
-      dispatch();
-
-      return topicData.get()
-        .then( this.updateTopics );
-    }.bind( this );
+  fetchTopics: function fetchTopics() {
+    return topicData.get()
+      .then( _.shuffle )
+      .then( this.updateTopics );
   },
 
   /**
@@ -33,6 +29,13 @@ TopicActions.prototype = {
    */
   updateTopics: function updateTopics( topics ) {
     return topics;
+  },
+
+  /**
+   * Update active topic
+   */
+  updateActiveTopicId: function updateActiveTopicId( topicId ) {
+    return topicId;
   }
 
 };

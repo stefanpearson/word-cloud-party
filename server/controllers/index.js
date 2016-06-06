@@ -1,2 +1,2 @@
 require( './home' );
-require( './topics' );
+require( './api/topics' );

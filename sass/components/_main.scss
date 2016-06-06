@@ -31,4 +31,12 @@
     @include push( 1 );
     padding-top: rem( $v-gutter * 4 );
     padding-bottom: rem( $v-gutter * 4 );
+    @include transition-property( transform, opacity );
+    @include transition-duration( 0.066s );
+    @include transition-timing-function( ease-in-out );
+
+    &.is-hidden {
+        @include transform( translateX( 2em ) );
+        opacity: 0;
+    }
 }

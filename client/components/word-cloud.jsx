@@ -11,65 +11,107 @@ var WordCloudWord = require( './word-cloud-word' ),
 
 /**
  * Word Cloud component
- * TODO: loop through words and pass properties through
  */
 var WordCloud = React.createClass( {
 
+  /**
+   * Setup state
+   */
   getInitialState: function getInitialState() {
-    return TopicStore.getState();
+    return {
+      topics: TopicStore.getState().topics
+    };
   },
 
+  /**
+   * Initialise handler
+   */
   componentDidMount: function componentDidMount() {
-    TopicStore.listen( this.onChange );
+
+    // Set events
+    TopicStore.listen( this.handleUpdatedTopicStore );
+
+    // Trigger an action to fetch the topics
     TopicActions.fetchTopics();
+
   },
 
+  /**
+   * Gracefully unmount the component
+   */
   componentWillUnmount: function componentDidMount() {
+
+    // Remove events
     TopicStore.unlisten( this.onChange );
+
   },
 
-  onChange: function onChange( state ) {
-    var sortedIndexes = _.chain( state.topics )
-      .sortBy( function( topic ) {
-        return topic.volume;
-      } )
-      .map( function( topic ) {
-        return topic.id;
-      } )
-      .reverse()
-      .value();
+  /**
+   * Handle updated topics from the store
+   */
+  handleUpdatedTopicStore: function handleUpdatedTopicStore( state ) {
 
     this.setState( {
-      topics: _.shuffle( state.topics )
-    } );
-
-    this.setState( {
-      sortedIndexes: sortedIndexes
+      topics: state.topics
     } );
 
   },
 
-  getWordWeight: function getWordWeight( topic ) {
-    var index = _.indexOf( this.state.sortedIndexes, topic.id ),
-        total = _.size( this.state.sortedIndexes );
-
-    return Math.ceil( index / ( total / 6 ) );
-  },
-
+  /**
+   * Render!
+   */
   render: function render() {
+    var sortedTopicIds = WordCloud.sortTopicsByVolume( this.state.topics );
+
     return (
       <div className="word-cloud">
-        { this.state.topics.map( function( topic ) {
+        { _.map( this.state.topics, function( topic ) {
           var props = {
+            id: topic.id,
             label: topic.label,
             sentimentScore: topic.sentimentScore,
-            weight: this.getWordWeight( topic )
+            weight: WordCloud.getTopicWeight( topic, sortedTopicIds )
           };
           return <WordCloudWord key={ topic.id } {...props} />;
         }.bind( this ) ) }
       </div>
     );
+  },
+
+  /**
+   * Static methods
+   */
+  statics: {
+
+    /**
+     * Utility to sort topic IDs (by volume)
+     * TODO: move this to statics hash
+     */
+    sortTopicsByVolume: function cacheSortedTopicState( topics ) {
+      return sortedIndexes = _.chain( topics )
+        .sortBy( function( topic ) {
+          return topic.volume;
+        } )
+        .map( function( topic ) {
+          return topic.id;
+        } )
+        .reverse()
+        .value();
+    },
+
+    /**
+     * Utility to return the weight of a topic, relative to the collection
+     * TODO: move this to statics hash
+     */
+    getTopicWeight: function getTopicWeight( topic, sortedTopicIds ) {
+      var index = _.indexOf( sortedTopicIds, topic.id ),
+          total = _.size( sortedTopicIds );
+
+      return Math.ceil( index / ( total / 6 ) );
+    }
+
   }
+
 } );
 
 

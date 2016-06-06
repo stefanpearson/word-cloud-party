@@ -13,9 +13,11 @@ var dispatcher = require( '../lib/dispatcher' ),
 var TopicStore = function() {
 
   this.topics = [];
+  this.activeTopicId = null;
 
   this.bindListeners( {
-    handleUpdateTopics: TopicActions.updateTopics
+    handleUpdateTopics: TopicActions.updateTopics,
+    handleUpdateActiveTopicId: TopicActions.updateActiveTopicId
   } );
 
 };
@@ -28,6 +30,13 @@ TopicStore.prototype = {
    */
   handleUpdateTopics: function handleUpdateTopics( topics ) {
     this.topics = topics;
+  },
+
+  /**
+   * Handle an updated active topic
+   */
+  handleUpdateActiveTopicId: function handleUpdateActiveTopicId( topicId ) {
+    this.activeTopicId = topicId;
   }
 
 };

@@ -1,5 +1,6 @@
 // External dependencies
-var React = require( 'react' );
+var React = require( 'react' ),
+    _ = require( 'lodash' );
 
 
 // Dependencies
@@ -8,16 +9,28 @@ var DayListDay = require( './day-list-day' );
 
 /**
  * Day List component
- * TODO: loop through days
  */
 var DayList = React.createClass( {
+
+  /**
+   * Render!
+   */
   render: function render() {
+    var maxVolume = _.maxBy( this.props.days, 'volume' ).volume;
+
     return (
       <div className="day-list">
-        <DayListDay />
+        {
+          _.map( this.props.days, function( day, index ) {
+            return (
+              <DayListDay key={ index } { ...day } maxVolume={ maxVolume } />
+            );
+          }.bind( this ) )
+        }
       </div>
     );
   }
+
 } );
 
 

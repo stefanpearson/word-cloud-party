@@ -22,7 +22,7 @@
 
     h1 {
         @include alpha;
-        font-family: Poly;
+        font-family: Poly; //TODO: include poly
         @include italic;
     }
 }

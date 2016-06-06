@@ -38,4 +38,5 @@ body,
 .bounds {
     position: relative;
     overflow-x: hidden;
+    @include user-select( none );
 }

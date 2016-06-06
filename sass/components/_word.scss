@@ -43,11 +43,12 @@
         }
     }
 
+    &:active,
     &.is-active {
 
         &:before,
         &:hover:before {
-            opacity: 1;
+            opacity: 0.8;
         }
     }
 }

@@ -1,39 +1,120 @@
 // External dependencies
-var React = require( 'react' );
+var React = require( 'react' ),
+    _ = require( 'lodash' );
 
 
 // Dependencies
-var Sentiment = require( './sentiment' );
+var Sentiment = require( './sentiment' ),
+    DayList = require( './day-list' ),
+    TopicStore = require( '../stores/topics' );
 
 
 /**
  * Main Detail component
- * TODO: pass sentiment values on to sentiment component
  */
 var MainDetail = React.createClass( {
+
+  /**
+   * Setup state
+   */
+  getInitialState: function getInitialState() {
+    var topicStore = TopicStore.getState();
+    return _.find( topicStore.topics, { id: topicStore.activeTopicId } ) || null;
+  },
+
+  /**
+   * Initialise handler
+   */
+  componentDidMount: function componentDidMount() {
+
+    // Set events
+    TopicStore.listen( this.handleUpdatedTopicStore );
+
+  },
+
+  /**
+   * Gracefully unmount the component
+   */
+  componentWillUnmount: function componentDidMount() {
+
+    // Remove events
+    TopicStore.unlisten( this.onChange );
+
+  },
+
+  /**
+   * Handle an update from the Topic Store
+   */
+  handleUpdatedTopicStore: function handleUpdatedTopicStore( topicStore ) {
+    if ( topicStore.activeTopicId && topicStore.topics.length ) {
+      this.setState( _.find( topicStore.topics, { id: topicStore.activeTopicId } ) );
+    }
+  },
+
+  /**
+   * Render!
+   */
   render: function render() {
+
+    if ( _.isEmpty( this.state ) ) {
+      return this.renderEmpty();
+    } else {
+      return this.renderDetail();
+    }
+  },
+
+  /**
+   * Render empty if there are no properties
+   */
+  renderEmpty: function renderEmpty() {
+    return (
+      <div className="main__side is-hidden"></div>
+    );
+  },
+
+  /**
+   * Render the main detail view
+   */
+  renderDetail: function renderDetail() {
+    var sentiments = [
+      {
+        sentiment: 'positive',
+        value: this.state.sentiment.positive
+      },
+      {
+        sentiment: 'neutral',
+        value: this.state.sentiment.neutral
+      },
+      {
+        sentiment: 'negative',
+        value: this.state.sentiment.negative
+      }
+    ];
+
     return (
       <div className="main__side">
         <header className="section-header">
-          <h1 className="section-header__label">{ this.props.heading || '…' }</h1>
+          <h1 className="section-header__label">{ this.state.label }</h1>
           <div className="section-header__badge">
-            <div className="sentiment-score">{ this.props.sentimentScore || 0 }</div>
+            <div className="sentiment-score">{ this.state.sentimentScore }</div>
           </div>
         </header>
-        <section class="stat-list">
-          <div class="stat-list__item">
-            <Sentiment />
-          </div>
-          <div class="stat-list__item">
-            <Sentiment />
-          </div>
-          <div class="stat-list__item">
-            <Sentiment />
-          </div>
+        <section className="stat-list">
+          {
+            _.map( sentiments, function( sentiment, index ) {
+              return (
+                <div className="stat-list__item" key={ index }>
+                  <Sentiment { ...sentiment } />
+                </div>
+              );
+            } )
+          }
         </section>
+        <DayList days={ _.sortBy( this.state.days, 'date' ) } />
       </div>
     );
   }
+
 } );
 
 

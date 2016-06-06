@@ -10,6 +10,10 @@ var WordCloud = require( './word-cloud' );
  * Main Body component
  */
 var MainBody = React.createClass( {
+
+  /**
+   * Render!
+   */
   render: function render() {
     return (
       <div className="main__body">
@@ -20,6 +24,7 @@ var MainBody = React.createClass( {
       </div>
     );
   }
+
 } );
 
 

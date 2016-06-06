@@ -8,24 +8,36 @@ var utils = require( '../lib/utils' );
 
 /**
  * Sentiment component
- * TODO: add modifier classes
  */
 var Sentiment = React.createClass( {
+
+  /**
+   * Declare default properties
+   */
+  getDefaultProps: function getDefaultProps() {
+    return {
+      value: 0
+    };
+  },
+
+  /**
+   * Render!
+   */
   render: function render() {
     var sentimentClasses = {
-      'sentiment': true,
-      'sentiment--positive': true,
-      'sentiment--negative': false,
-      'sentiment--neutral': false
+      'sentiment': true
     };
+
+    sentimentClasses[ 'sentiment--' + this.props.sentiment ] = true;
 
     return (
       <div className={ utils.toClass( sentimentClasses ) }>
-        <span class="sentiment__icon"></span>
-        <span class="sentiment__value">{ this.props.value }</span>
+        <span className="sentiment__icon"></span>
+        <span className="sentiment__value">{ this.props.value }</span>
       </div>
     );
   }
+
 } );
 
 
