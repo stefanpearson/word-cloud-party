@@ -290,7 +290,9 @@ var MainDetail = React.createClass({
    * Render the main detail view
    */
   renderDetail: function renderDetail() {
-    var sentiments = [{
+    var sentiments, days;
+
+    sentiments = [{
       sentiment: 'positive',
       value: this.state.sentiment.positive
     }, {
@@ -300,6 +302,8 @@ var MainDetail = React.createClass({
       sentiment: 'negative',
       value: this.state.sentiment.negative
     }];
+
+    days = _.chain(this.state.days).sortBy('date').reverse().value();
 
     return React.createElement(
       'div',
@@ -333,7 +337,7 @@ var MainDetail = React.createClass({
           );
         })
       ),
-      React.createElement(DayList, { days: _.sortBy(this.state.days, 'date') })
+      React.createElement(DayList, { days: days })
     );
   }
 
