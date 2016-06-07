@@ -3,6 +3,7 @@ var http = require( 'http' ),
     express = require( 'express' ),
     serveStatic = require( 'serve-static' ),
     bodyParser = require( 'body-parser' ),
+    cors = require( 'cors' ),
     compression = require( 'compression' ),
     Promise = require( 'bluebird' ),
     _ = require( 'lodash' );
@@ -32,6 +33,7 @@ var init = function init() {
 
     // Middleware
     app.use( middleware.removeTrailingSlash );
+    app.use( cors() );
     app.use( bodyParser.json() );
     app.use( bodyParser.urlencoded( { extended: true } ) );
     app.use( compression() );
