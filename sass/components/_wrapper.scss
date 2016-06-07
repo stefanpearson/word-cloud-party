@@ -15,6 +15,7 @@
 .wrapper {
     position: relative;
     max-width: $max-wrapper-width;
+    min-width: $min-wrapper-width;
     margin: 0 auto;
     padding: 0 rem( $h-gutter * 2 );
 

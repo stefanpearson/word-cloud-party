@@ -21,14 +21,21 @@
 }
 
 .main__body {
-    @include span( 8 );
     padding-top: rem( $v-gutter * 3 );
     padding-bottom: rem( $v-gutter * 3 );
+    @include span( 8 );
 }
 
 .main__side {
-    @include span( 3 );
-    @include push( 1 );
     padding-top: rem( $v-gutter * 5 );
     padding-bottom: rem( $v-gutter * 5 );
+
+    @include media( '>=large' ) {
+        @include span( 3 );
+        @include push( 1 );
+    }
+
+    @include media( '<large' ) {
+        @include span( 4 );
+    }
 }
