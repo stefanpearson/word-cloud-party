@@ -24,7 +24,15 @@ npm install
 
 ### Environment variables
 
-…
+A `.env` file in the root provides some development defaults, but should not be used in production.
+
+| Key         | Description                                                          |
+|-------------|----------------------------------------------------------------------|
+| `NODE_ENV`  | Environment e.g. `production`, `development`                         |
+| `PROTOCOL`  | `http`, `https`                                                      |
+| `PORT`      | Port for incoming HTTP requests (PaaS should set this automatically) |
+| `HOST`      | Used to construct the base URL                                       |
+| `LOG_LEVEL` | `debug` for development, `info` for production                       |
 
 ### Running
 
