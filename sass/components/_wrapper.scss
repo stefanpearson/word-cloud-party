@@ -18,8 +18,4 @@
     min-width: $min-wrapper-width;
     margin: 0 auto;
     padding: 0 rem( $h-gutter * 2 );
-
-    @include media( '<40em' ) {
-        padding: 0 rem( $h-gutter );
-    }
 }

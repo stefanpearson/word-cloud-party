@@ -1,6 +1,6 @@
 /**
- * Seed
- * ====
+ * Word Cloud Party
+ * ================
  *
  * Contents:
  * ---------
@@ -12,21 +12,22 @@
  * typography-mixins ....... Typography mixins
  *
  * /core
- * animation ............... Animation keyframes
  * defaults ................ Browser reset
+ * screen .................. Base screen styles
  * typography .............. Base typography
- * screen .................. Base screen layout
  *
  * /components
- * a ....................... Common anchor styles
+ * bar ..................... Bar meter
  * day-list ................ Day list
  * header .................. Header
  * main .................... Main view
- * media ................... Media (image, video, embed)
- * wrapper ................. Wrapper
+ * section-header .......... Section header
+ * sentiment ............... Sentiment item
+ * stat-list ............... Stat list
+ * word .................... Word
+ * wrapper ................. Wrapper constraint
  */
 
-@import "core/animation";
 @import "core/defaults";
 @import "core/screen";
 @import "core/typography";

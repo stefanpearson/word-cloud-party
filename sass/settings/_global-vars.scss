@@ -21,9 +21,8 @@ $y-unit: 6; // All spacing and layout to be multiple or divisible of this
 $x-unit: 6; // All spacing and layout to be multiple or divisible of this
 $h-gutter: $x-unit * 4; // Horizontal gutter space
 $v-gutter: $y-unit * 3; // Vertical gutter space
-$radius-base: rem( 3 ); // Common radius for components
 
-// Susy
+// Susy grid config
 $susy: (
     //container: 100%,
     container: auto,
@@ -38,13 +37,12 @@ $susy: (
     )
 );
 
-// Include-media
+// Include-media config
 $breakpoints: (
     'small': rem( 480 ), // small device maximum
-    'medium-small': rem( 700 ),
+    'medium-small': rem( 700 ), // medium-small maximum
     'medium': rem( 960 ), // medium device maximum
-    'large': rem( 1200 ), // large device maximum
-    'max-wrapper': $max-wrapper-width // max width of wrapper
+    'large': rem( 1200 ) // large device maximum
 );
 $unit-intervals: (
     'px': 1,
@@ -71,12 +69,5 @@ $color-base-faint: hsl(14,12%,94%);
 $color-positive: hsl(177,37%,57%);
 $color-negative: hsl(359,67%,66%);
 
-// Brand blue
-$color-a: hsl(196,100%,43%);
-$color-a-light: hsl(196,100%,55%);
-$color-a-faint: hsla(196,100%,43%,0.5);
-$color-a-dark: hsl(196,100%,38%);
-$color-a-washed: hsla(196,100%,70%,0.2);
-
 // Yellow
-$color-b: hsl(57,100%,50%);
+$color-a: hsl(57,100%,50%);

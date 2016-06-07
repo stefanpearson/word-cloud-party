@@ -31,7 +31,7 @@ select {
 }
 
 a {
-    color: $color-a-dark;
+    color: $color-positive;
 }
 
 b,
@@ -45,6 +45,6 @@ em {
 }
 
 ::selection {
-    background-color: $color-a;
+    background-color: $color-base;
     color: $color-white;
 }

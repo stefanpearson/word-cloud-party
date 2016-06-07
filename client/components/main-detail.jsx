@@ -71,7 +71,7 @@ var MainDetail = React.createClass( {
    */
   renderEmpty: function renderEmpty() {
     return (
-      <div className="main__side is-hidden"></div>
+      <div className="main__side"></div>
     );
   },
 
