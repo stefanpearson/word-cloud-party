@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "NODE_ENV=development gulp",
     "build": "gulp build",
-    "start": "node server/index.js"
+    "start": "gulp build && node server/index.js"
   },
   "repository": {
     "type": "git",
