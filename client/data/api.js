@@ -9,7 +9,7 @@ var environment = require( '../lib/environment' );
 /**
  * Get topic collection
  */
-var get = function get() {
+var getTopics = function get() {
   return request( {
     uri: environment.baseUrl + '/api/topics',
     method: 'GET',
@@ -29,7 +29,7 @@ var get = function get() {
 /**
  * Get topic
  */
-var getById = function getById( id ) {
+var getTopicById = function getById( id ) {
   return request( {
     uri: environment.baseUrl + '/api/topics/' + id,
     method: 'GET',
@@ -48,6 +48,6 @@ var getById = function getById( id ) {
 
 // Exports
 module.exports = {
-  get: get,
-  getById: getById
+  getTopics: getTopics,
+  getTopicById: getTopicById
 };

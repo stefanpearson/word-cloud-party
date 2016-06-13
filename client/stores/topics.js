@@ -4,7 +4,7 @@
 
 // Dependencies
 var dispatcher = require( '../lib/dispatcher' ),
-    TopicActions = require( '../actions/topics' );
+    topicActions = require( '../actions/topics' );
 
 
 /**
@@ -16,8 +16,8 @@ var TopicStore = function() {
   this.activeTopicId = null;
 
   this.bindListeners( {
-    handleUpdateTopics: TopicActions.updateTopics,
-    handleUpdateActiveTopicId: TopicActions.updateActiveTopicId
+    handleUpdateTopics: topicActions.updateTopics,
+    handleUpdateActiveTopicId: topicActions.updateActiveTopicId
   } );
 
 };
@@ -26,7 +26,7 @@ var TopicStore = function() {
 TopicStore.prototype = {
 
   /**
-   * Handle update of the topics
+   * Handle an update of the topics
    */
   handleUpdateTopics: function handleUpdateTopics( topics ) {
 
@@ -49,4 +49,4 @@ TopicStore.prototype = {
 
 
 // Exports
-module.exports = dispatcher.createStore( TopicStore, 'TopicStore' );
+module.exports = dispatcher.createStore( TopicStore, 'topicStore' );

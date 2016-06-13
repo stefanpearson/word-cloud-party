@@ -6,7 +6,7 @@ var React = require( 'react' ),
 // Dependencies
 var Sentiment = require( './sentiment' ),
     DayList = require( './day-list' ),
-    TopicStore = require( '../stores/topics' );
+    topicStore = require( '../stores/topics' );
 
 
 /**
@@ -18,8 +18,11 @@ var MainDetail = React.createClass( {
    * Setup state
    */
   getInitialState: function getInitialState() {
-    var topicStore = TopicStore.getState();
-    return _.find( topicStore.topics, { id: topicStore.activeTopicId } ) || null;
+    var topicStoreState = topicStore.getState();
+
+    return {
+      topic: _.find( topicStoreState.topics, { id: topicStoreState.activeTopicId } ) || null
+    };
   },
 
   /**
@@ -28,7 +31,7 @@ var MainDetail = React.createClass( {
   componentDidMount: function componentDidMount() {
 
     // Set events
-    TopicStore.listen( this.handleUpdatedTopicStore );
+    topicStore.listen( this.handleUpdatedTopicStore );
 
   },
 
@@ -38,7 +41,7 @@ var MainDetail = React.createClass( {
   componentWillUnmount: function componentDidMount() {
 
     // Remove events
-    TopicStore.unlisten( this.onChange );
+    topicStore.unlisten( this.handleUpdatedTopicStore );
 
   },
 
@@ -49,7 +52,9 @@ var MainDetail = React.createClass( {
     var activeTopic = _.find( topicStore.topics, { id: topicStore.activeTopicId } );
 
     if ( activeTopic ) {
-      this.setState( activeTopic );
+      this.setState( {
+        topic: activeTopic
+      } );
     }
 
   },
@@ -59,7 +64,7 @@ var MainDetail = React.createClass( {
    */
   render: function render() {
 
-    if ( _.isEmpty( this.state ) ) {
+    if ( _.isEmpty( this.state.topic ) ) {
       return this.renderEmpty();
     } else {
       return this.renderDetail();
@@ -85,19 +90,19 @@ var MainDetail = React.createClass( {
     sentiments = [
       {
         sentiment: 'positive',
-        value: this.state.sentiment.positive
+        value: this.state.topic.sentiment.positive
       },
       {
         sentiment: 'neutral',
-        value: this.state.sentiment.neutral
+        value: this.state.topic.sentiment.neutral
       },
       {
         sentiment: 'negative',
-        value: this.state.sentiment.negative
+        value: this.state.topic.sentiment.negative
       }
     ];
 
-    days = _.chain( this.state.days )
+    days = _.chain( this.state.topic.days )
       .sortBy( 'date' )
       .reverse()
       .value();
@@ -105,9 +110,9 @@ var MainDetail = React.createClass( {
     return (
       <div className="main__side">
         <header className="section-header">
-          <h1 className="section-header__label">{ this.state.label }</h1>
+          <h1 className="section-header__label">{ this.state.topic.label }</h1>
           <div className="section-header__badge">
-            <div className="sentiment-score">{ this.state.sentimentScore }</div>
+            <div className="sentiment-score">{ this.state.topic.sentimentScore }</div>
           </div>
         </header>
         <section className="stat-list">

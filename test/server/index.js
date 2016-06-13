@@ -3,7 +3,7 @@
 
 
 // Dependencies
-var app = require( '../../../server' );
+var app = require( '../../server' );
 
 
 /**

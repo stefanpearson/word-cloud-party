@@ -4,8 +4,8 @@ var React = require( 'react' );
 
 // Dependencies
 var utils = require( '../lib/utils' ),
-    TopicStore = require( '../stores/topics' ),
-    TopicActions = require( '../actions/topics' );
+    topicActions = require( '../actions/topics' ),
+    topicStore = require( '../stores/topics' );
 
 
 /**
@@ -17,8 +17,10 @@ var WordCloudWord = React.createClass( {
    * Setup state
    */
   getInitialState: function getInitialState() {
+    var topicStoreState = topicStore.getState();
+
     return {
-      isActive: TopicStore.getState().activeTopicId == this.props.id
+      isActive: topicStoreState.activeTopicId == this.props.id
     };
   },
 
@@ -28,7 +30,7 @@ var WordCloudWord = React.createClass( {
   componentDidMount: function componentDidMount() {
 
     // Set events
-    TopicStore.listen( this.handleUpdatedTopicStore );
+    topicStore.listen( this.handleUpdatedTopicStore );
 
   },
 
@@ -38,7 +40,7 @@ var WordCloudWord = React.createClass( {
   componentWillUnmount: function componentDidMount() {
 
     // Remove events
-    TopicStore.unlisten( this.onChange );
+    topicStore.unlisten( this.handleUpdatedTopicStore );
 
   },
 
@@ -57,7 +59,7 @@ var WordCloudWord = React.createClass( {
    * Handle a click event on the component
    */
   handleClick: function handleClick() {
-    TopicActions.updateActiveTopicId( this.props.id );
+    topicActions.updateActiveTopicId( this.props.id );
   },
 
   /**

@@ -5,8 +5,8 @@ var React = require( 'react' ),
 
 // Dependencies
 var WordCloudWord = require( './word-cloud-word' ),
-    TopicStore = require( '../stores/topics' ),
-    TopicActions = require( '../actions/topics' );
+    topicStore = require( '../stores/topics' ),
+    topicActions = require( '../actions/topics' );
 
 
 /**
@@ -18,8 +18,10 @@ var WordCloud = React.createClass( {
    * Setup state
    */
   getInitialState: function getInitialState() {
+    var topicStoreState = topicStore.getState();
+
     return {
-      topics: TopicStore.getState().topics
+      topics: topicStoreState.topics
     };
   },
 
@@ -29,10 +31,10 @@ var WordCloud = React.createClass( {
   componentDidMount: function componentDidMount() {
 
     // Set events
-    TopicStore.listen( this.handleUpdatedTopicStore );
+    topicStore.listen( this.handleUpdatedTopicStore );
 
     // Trigger an action to fetch the topics
-    TopicActions.fetchTopics();
+    topicActions.fetchTopics();
 
   },
 
@@ -42,7 +44,7 @@ var WordCloud = React.createClass( {
   componentWillUnmount: function componentDidMount() {
 
     // Remove events
-    TopicStore.unlisten( this.onChange );
+    topicStore.unlisten( this.handleUpdatedTopicStore );
 
   },
 
@@ -105,7 +107,7 @@ var WordCloud = React.createClass( {
       var index = _.indexOf( sortedTopicIds, topic.id ),
           total = _.size( sortedTopicIds );
 
-      return Math.ceil( index / ( total / 6 ) );
+      return Math.ceil( ( index + 1 ) / ( total / 6 ) );
     }
 
   }

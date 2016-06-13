@@ -4,7 +4,7 @@ var request = require( 'request-promise' );
 
 // Dependencies
 var shared = require( '../lib/shared' ),
-    environment = require( '../../../../server/lib/environment' );
+    environment = require( '../../../server/lib/environment' );
 
 
 describe( 'Home', function () {

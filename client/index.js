@@ -4,23 +4,30 @@ var React = require( 'react' ),
 
 
 // Dependencies
-var topicProvider = require( './data/topics' ),
+var environment = require( './lib/environment' ),
     Main = require( './components/main' );
 
 
 /**
  * Initialise the app
  */
-var init = function init() {
-  var appEl = document.getElementById( 'app' );
+var init = function init( appEl ) {
 
   // Mount the app
   if ( appEl ) {
-    ReactDom.render( <Main />, document.getElementById( 'app' ) );
+    ReactDom.render( <Main />, appEl );
   }
 
 };
 
 
-// Initialise
-init();
+// Manually initialise during test environment
+if ( environment.name != 'test' ) {
+  init( document.getElementById( 'app' ) );
+}
+
+
+// Exports
+module.exports = {
+  init: init
+};

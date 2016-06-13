@@ -4,13 +4,18 @@ var _ = require( 'lodash' );
 
 // Dependencies
 var dispatcher = require( '../lib/dispatcher' ),
-    topicData = require( '../data/topics' );
+    api = require( '../data/api' );
 
 
 /**
  * Topic Action constructor
  */
-var TopicActions = function() {};
+var TopicActions = function() {
+
+  // Create actions that pass parameters straight through to the dispatcher
+  this.generateActions( 'updateTopics', 'updateActiveTopicId' );
+
+};
 
 
 TopicActions.prototype = {
@@ -19,23 +24,14 @@ TopicActions.prototype = {
    * Fetch topics from data provider
    */
   fetchTopics: function fetchTopics() {
-    return topicData.get()
-      .then( _.shuffle )
-      .then( this.updateTopics );
-  },
+    return function( dispatch ) {
 
-  /**
-   * Update topics
-   */
-  updateTopics: function updateTopics( topics ) {
-    return topics;
-  },
+      dispatch();
 
-  /**
-   * Update active topic
-   */
-  updateActiveTopicId: function updateActiveTopicId( topicId ) {
-    return topicId;
+      return api.getTopics()
+        .then( _.shuffle )
+        .then( this.updateTopics );
+    }.bind( this );
   }
 
 };

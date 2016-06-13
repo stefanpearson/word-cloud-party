@@ -5,8 +5,8 @@ var request = require( 'request-promise' ),
 
 // Dependencies
 var shared = require( '../lib/shared' ),
-    environment = require( '../../../../server/lib/environment' ),
-    topics = require( '../../../../data/topics' );
+    environment = require( '../../../server/lib/environment' ),
+    topics = require( '../../../data/topics' );
 
 
 describe( 'API: Topics', function () {

@@ -1,4 +1,5 @@
---require should
+--require should ./test/client/lib/dom.js
 --ui bdd
 --recursive
 --timeout 6000
+--compilers .:test/client/lib/compiler.js
