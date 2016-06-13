@@ -18,7 +18,7 @@ An interactive word-cloud of topics, displaying engagement volume and sentiment.
 * HTML uses [BEM](https://en.bem.info/methodology/key-concepts/) for sane namespacing
 * Sass split into BEM components
 * Components components components
-* Unit tests for stateful components, flux and networking
+* Unit tests for controller-views, flux and networking
 
 ## Installation
 
