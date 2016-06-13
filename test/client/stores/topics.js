@@ -11,7 +11,7 @@ var dispatcher = require( '../../../client/lib/dispatcher' ),
 var topicStore = proxyquire( '../../../client/stores/topics', {} );
 
 
-describe( 'topicStore', function() {
+describe( 'Client: topicStore', function() {
 
   it( 'should have the correct state properties', function() {
     topicStore.getState().should.have.properties( [ 'topics', 'activeTopicId' ] );

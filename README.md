@@ -40,7 +40,7 @@ A `.env` file in the root provides some development defaults, but should not be 
 
 ### Running
 
-To run the build and express server:
+To run the build and server:
 
 ```sh
 npm start

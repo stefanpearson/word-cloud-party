@@ -11,7 +11,7 @@ var environment = require( '../../../client/lib/environment' ),
 var api = require( '../../../client/data/api' );
 
 
-describe( 'API data manager', function() {
+describe( 'Client: API data manager', function() {
 
   before( function() {
 
@@ -22,6 +22,10 @@ describe( 'API data manager', function() {
     nock( environment.baseUrl ).get( '/api/topics' ).reply( 200, this.expectedTopics );
     nock( environment.baseUrl ).get( '/api/topics/' + this.expectedTopic.id ).reply( 200, this.expectedTopic );
 
+  } );
+
+  after( function() {
+    nock.cleanAll();
   } );
 
   describe( 'Retrieving topics', function() {

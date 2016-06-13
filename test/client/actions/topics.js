@@ -28,7 +28,7 @@ var topicActions = proxyquire( '../../../client/actions/topics', {
 } );
 
 
-describe( 'topicActions', function() {
+describe( 'Client: topicActions', function() {
 
   describe( 'Triggering fetchTopics', function() {
 

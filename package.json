@@ -8,9 +8,7 @@
     "dev": "NODE_ENV=development gulp",
     "build": "gulp build",
     "start": "gulp build && node server/index.js",
-    "test": "npm run test-server && npm run test-client",
-    "test-server": "env NODE_ENV=test PROTOCOL=http HOST=localhost:7655 PORT=7655 LOG_LEVEL=info ./node_modules/mocha/bin/mocha --opts ./test/mocha.opts ./test/server",
-    "test-client": "env NODE_ENV=test PROTOCOL=http HOST=localhost:7655 ./node_modules/mocha/bin/mocha --opts ./test/mocha.opts ./test/client"
+    "test": "env NODE_ENV=test PROTOCOL=http HOST=localhost:7655 PORT=7655 LOG_LEVEL=info ./node_modules/mocha/bin/mocha --opts ./test/mocha.opts ./test"
   },
   "repository": {
     "type": "git",

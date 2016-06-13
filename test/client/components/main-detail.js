@@ -22,7 +22,7 @@ var mockModules = {
 var MainDetail = proxyquire( '../../../client/components/main-detail.jsx', mockModules );
 
 
-describe( 'MainDetail component', function() {
+describe( 'Client: MainDetail component', function() {
 
   describe( 'MainDetail lifecycle', function() {
 

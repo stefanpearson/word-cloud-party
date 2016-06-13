@@ -23,7 +23,7 @@ var mockModules = {
 var WordCloud = proxyquire( '../../../client/components/word-cloud.jsx', mockModules );
 
 
-describe( 'WordCloud component', function() {
+describe( 'Client: WordCloud component', function() {
 
   describe( 'WordCloud lifecycle', function() {
 

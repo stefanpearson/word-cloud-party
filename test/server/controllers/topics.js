@@ -9,7 +9,7 @@ var shared = require( '../lib/shared' ),
     topics = require( '../../../data/topics' );
 
 
-describe( 'API: Topics', function () {
+describe( 'Server: Topics API', function () {
 
   describe( 'Retrieve topic collection', function() {
 

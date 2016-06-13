@@ -1,5 +1,6 @@
 // External dependencies
-var request = require( 'request-promise' );
+var request = require( 'request-promise' ),
+    nock = require( 'nock' );
 
 
 // Dependencies
@@ -7,7 +8,7 @@ var shared = require( '../lib/shared' ),
     environment = require( '../../../server/lib/environment' );
 
 
-describe( 'Home', function () {
+describe( 'Server: Home', function () {
 
   describe( 'Retrieve home', function() {
 
