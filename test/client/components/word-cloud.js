@@ -121,14 +121,14 @@ describe( 'Client: WordCloud component', function() {
 
     } );
 
-    it( 'should return a light weight if there is a low volume', function() {
+    it( 'should return a heavy weight if there is a high volume', function() {
       var topic = _.first( this.sortedTopics );
 
       WordCloud.getTopicWeight( topic, this.sortedTopicIds ).should.eql( 1 );
 
     } );
 
-    it( 'should return a heavy weight if there is a high volume', function() {
+    it( 'should return a light weight if there is a low volume', function() {
       var topic = _.last( this.sortedTopics );
 
       WordCloud.getTopicWeight( topic, this.sortedTopicIds ).should.eql( 6 );
