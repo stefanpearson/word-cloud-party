@@ -57,8 +57,11 @@ describe( 'MainDetail component', function() {
 
       this.enzyme.find( '.section-header__label' ).text().should.eql( topic.label );
       this.enzyme.find( '.sentiment-score' ).text().should.eql( topic.sentimentScore.toString() );
-      this.enzyme.find( mockModules[ './sentiment' ] ).length.should.eql( 3 );
       this.enzyme.find( mockModules[ './day-list' ] ).props().should.have.property( 'days' );
+      this.enzyme.find( mockModules[ './sentiment' ] ).length.should.eql( 3 );
+      this.enzyme.find( mockModules[ './sentiment' ] ).forEach( function( sentiment ) {
+        sentiment.props().should.have.properties( [ 'sentiment', 'value' ] );
+      } );
 
     } );
 

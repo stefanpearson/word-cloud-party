@@ -2,11 +2,14 @@
 
 An interactive word-cloud of topics, displaying engagement volume and sentiment. A demo is available [here](https://word-cloud-party.herokuapp.com).
 
+![alt tag](https://raw.githubusercontent.com/stefanpearson/word-cloud-party/master/docs/demo.png)
+
 ## Design decisions
 
 #### Server
 
 * Server app is responsible for serving both the client assets and REST API
+* Integration tests
 
 #### Client
 
@@ -15,6 +18,7 @@ An interactive word-cloud of topics, displaying engagement volume and sentiment.
 * HTML uses [BEM](https://en.bem.info/methodology/key-concepts/) for sane namespacing
 * Sass split into BEM components
 * Components components components
+* Unit tests for stateful components, flux and networking
 
 ## Installation
 
@@ -50,7 +54,6 @@ npm run dev
 
 ## To do ⏱
 
-* Client testing for React components 😇
 * Animation when state changes
 * Show detail in flyout menu for small-screen displays
 * Isomorphic rendering on the server
