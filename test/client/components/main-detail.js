@@ -26,15 +26,35 @@ describe( 'Client: MainDetail component', function() {
 
   describe( 'MainDetail lifecycle', function() {
 
-    before( function() {
+    beforeEach( function() {
 
+      this.topicStoreListenerSpy = sinon.spy( mockModules[ '../stores/topics' ], 'listen' );
       this.component = <MainDetail />;
       this.enzyme = enzyme.mount( this.component );
 
     } );
 
-    it.skip( 'should update the state to be the updated active topic in the store', function() {
-      // TODO: figure out how to mock a topicStore event and watch state
+    afterEach( function() {
+      mockModules[ '../stores/topics' ].listen.restore();
+    } );
+
+    it( 'should listen to the topic store', function() {
+
+      this.topicStoreListenerSpy.callCount.should.eql( 1 );
+      this.topicStoreListenerSpy.getCall( 0 ).args[ 0 ].should.be.a.Function;
+
+    } );
+
+    it( 'should update the state to be the updated active topic in the store', function() {
+      var expectedTopic = _.sample( topicData.topics );
+
+      this.topicStoreListenerSpy.callCount.should.eql( 1 );
+      this.topicStoreListenerSpy.getCall( 0 ).args[ 0 ]( {
+        topics: topicData.topics,
+        activeTopicId: expectedTopic.id
+      } );
+      this.enzyme.state( 'topic' ).should.eql( expectedTopic );
+
     } );
 
   } );

@@ -11,7 +11,7 @@ var topicData = require( '../../../data/topics' );
  * Mock React component object
  */
 var mockComponent = {
-  render: function() {
+  render: function render() {
     return ( <div></div> );
   }
 };
@@ -31,20 +31,14 @@ var mockTopicActions = {
  * Mock topic store
  */
 var mockTopicStore = {
-
   getState: function getState() {
     return {
       activeTopicId: topicData.topics[ 0 ].id,
       topics: topicData.topics
     };
   },
-
-  listen: function listen( cb ) {
-    cb( this.getState() );
-  },
-
+  listen: _.noop,
   unlisten: _.noop
-
 };
 
 

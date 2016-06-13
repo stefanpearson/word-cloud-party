@@ -30,9 +30,14 @@ describe( 'Client: WordCloudWord component', function() {
         id: topicData.topics[ 0 ].id
       };
 
+      this.topicStoreListenerSpy = sinon.spy( mockModules[ '../stores/topics' ], 'listen' );
       this.component = <WordCloudWord { ...props } />;
       this.enzyme = enzyme.mount( this.component );
 
+    } );
+
+    afterEach( function() {
+      mockModules[ '../stores/topics' ].listen.restore();
     } );
 
     it( 'should have an active state if it matches the active topic in the store when mounted', function() {
@@ -51,12 +56,21 @@ describe( 'Client: WordCloudWord component', function() {
 
     } );
 
-    it.skip( 'should update the state to be active when it matches the updated active topic in the store', function() {
-      // TODO: figure out how to mock a topicStore event and watch state
+    it( 'should listen to the topic store', function() {
+
+      this.topicStoreListenerSpy.callCount.should.eql( 1 );
+      this.topicStoreListenerSpy.getCall( 0 ).args[ 0 ].should.be.a.Function;
+
     } );
 
-    it.skip( 'should update the state to be inactive when it doesn\'t match the updated active topic in the store', function() {
-      // TODO: figure out how to mock a topicStore event and watch state
+    it( 'should update the state to be inactive when it doesn\'t match the updated active topic in the store', function() {
+
+      this.topicStoreListenerSpy.callCount.should.eql( 1 );
+      this.topicStoreListenerSpy.getCall( 0 ).args[ 0 ]( {
+        activeTopicId: '123'
+      } );
+      this.enzyme.state( 'isActive' ).should.eql( false );
+
     } );
 
   } );

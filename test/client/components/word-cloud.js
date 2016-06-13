@@ -27,33 +27,55 @@ describe( 'Client: WordCloud component', function() {
 
   describe( 'WordCloud lifecycle', function() {
 
-    before( function() {
+    beforeEach( function() {
+
       this.component = <WordCloud />;
       this.fetchTopicsSpy = sinon.spy( mockModules[ '../actions/topics' ], 'fetchTopics' );
+      this.topicStoreListenerSpy = sinon.spy( mockModules[ '../stores/topics' ], 'listen' );
       this.enzyme = enzyme.mount( this.component );
+
     } );
 
-    after( function() {
+    afterEach( function() {
+
       mockModules[ '../actions/topics' ].fetchTopics.restore();
+      mockModules[ '../stores/topics' ].listen.restore();
+
     } );
 
     it( 'should trigger a fetchTopics action when mounted', function() {
       this.fetchTopicsSpy.callCount.should.eql( 1 );
     } );
 
-    it.skip( 'should update the state when the topic store updates', function() {
-      // TODO: figure out how to mock a topicStore event and watch state
+    it( 'should listen to the topic store', function() {
+
+      this.topicStoreListenerSpy.callCount.should.eql( 1 );
+      this.topicStoreListenerSpy.getCall( 0 ).args[ 0 ].should.be.a.Function;
+
+    } );
+
+    it( 'should update the state when the topic store updates the topics', function() {
+      var expectedTopics = _.sampleSize( topicData.topics, 4 );
+
+      this.topicStoreListenerSpy.callCount.should.eql( 1 );
+      this.topicStoreListenerSpy.getCall( 0 ).args[ 0 ]( {
+        topics: expectedTopics
+      } );
+      this.enzyme.state( 'topics' ).should.eql( expectedTopics );
+
     } );
 
   } );
 
   describe( 'WordCloud rendering', function() {
 
-    before( function() {
+    beforeEach( function() {
+
       this.state = { topics: mockModules[ '../stores/topics' ].getState().topics };
       this.component = <WordCloud />;
       this.enzyme = enzyme.mount( this.component );
       this.enzyme.setState( this.state );
+
     } );
 
     it( 'should render a list of WordCloudWord components with the right properties', function() {
