@@ -1,14 +1,14 @@
 // External dependencies
-var nock = require( 'nock' );
+import nock from 'nock';
 
 
 // Dependencies
-var environment = require( '../../../client/lib/environment' ),
-    topicData = require( '../../../data/topics' );
+import environment from '../../../client/lib/environment';
+import topicData from '../../../data/topics';
 
 
 // Test module
-var api = require( '../../../client/data/api' );
+import * as api from '../../../client/data/api';
 
 
 describe( 'Client: API data manager', function() {

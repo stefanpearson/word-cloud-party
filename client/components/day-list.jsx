@@ -1,38 +1,31 @@
 // External dependencies
-var React = require( 'react' ),
-    _ = require( 'lodash' );
+import React from 'react';
+import _ from 'lodash';
 
 
 // Dependencies
-var DayListDay = require( './day-list-day' );
+import DayListDay from './day-list-day';
 
 
 /**
  * Day List component
+ * Stateless function
  */
-var DayList = React.createClass( {
+const DayList = props => {
 
-  /**
-   * Render!
-   */
-  render: function render() {
-    var maxVolume = _.maxBy( this.props.days, 'volume' ).volume;
+  const maxVolume = _.maxBy( props.days, 'volume' ).volume;
 
-    return (
-      <div className="day-list">
-        {
-          _.map( this.props.days, function( day, index ) {
-            return (
-              <DayListDay key={ index } { ...day } maxVolume={ maxVolume } />
-            );
-          }.bind( this ) )
-        }
-      </div>
-    );
-  }
+  const dayListDays = props.days.map( ( day, index ) => {
+    return <DayListDay key={ index } { ...day } maxVolume={ maxVolume } />
+  } );
 
-} );
+  return (
+    <div className="day-list">
+      { dayListDays }
+    </div>
+  );
+};
 
 
 // Exports
-module.exports = DayList;
+export default DayList;

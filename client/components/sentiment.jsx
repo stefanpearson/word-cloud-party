@@ -1,45 +1,31 @@
 // External dependencies
-var React = require( 'react' );
+import React from 'react';
 
 
 // Dependencies
-var utils = require( '../lib/utils' );
+import * as utils from '../lib/utils';
 
 
 /**
  * Sentiment component
+ * Stateless function
  */
-var Sentiment = React.createClass( {
+const Sentiment = props => {
 
-  /**
-   * Declare default properties
-   */
-  getDefaultProps: function getDefaultProps() {
-    return {
-      value: 0
-    };
-  },
+  const sentimentClasses = {
+    'sentiment': true
+  };
 
-  /**
-   * Render!
-   */
-  render: function render() {
-    var sentimentClasses = {
-      'sentiment': true
-    };
+  sentimentClasses[ 'sentiment--' + props.sentiment ] = true;
 
-    sentimentClasses[ 'sentiment--' + this.props.sentiment ] = true;
-
-    return (
-      <div className={ utils.toClass( sentimentClasses ) }>
-        <span className="sentiment__icon"></span>
-        <span className="sentiment__value">{ this.props.value }</span>
-      </div>
-    );
-  }
-
-} );
+  return (
+    <div className={ utils.toClass( sentimentClasses ) }>
+      <span className="sentiment__icon"></span>
+      <span className="sentiment__value">{ props.value || 0 }</span>
+    </div>
+  );
+};
 
 
 // Exports
-module.exports = Sentiment;
+export default Sentiment;

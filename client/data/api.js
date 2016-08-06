@@ -1,53 +1,50 @@
 // External dependencies
-var request = require( 'request-promise' );
+import request from 'request-promise';
 
 
 // Dependencies
-var environment = require( '../lib/environment' );
+import environment from '../lib/environment';
 
 
 /**
  * Get topic collection
  */
-var getTopics = function get() {
+let getTopics = () => {
   return request( {
     uri: environment.baseUrl + '/api/topics',
     method: 'GET',
     json: true,
     resolveWithFullResponse: true
   } )
-    .then( function( response ) {
+    .then( response => {
       if ( response.statusCode == 200 ) {
         return response.body;
       } else {
         throw new Error( response.body.message );
       }
-    } )
+    } );
 };
 
 
 /**
  * Get topic
  */
-var getTopicById = function getById( id ) {
+let getTopicById = id => {
   return request( {
     uri: environment.baseUrl + '/api/topics/' + id,
     method: 'GET',
     json: true,
     resolveWithFullResponse: true
   } )
-    .then( function( response ) {
+    .then( response => {
       if ( response.statusCode == 200 ) {
         return response.body;
       } else {
         throw new Error( response.body.message );
       }
-    } )
+    } );
 };
 
 
 // Exports
-module.exports = {
-  getTopics: getTopics,
-  getTopicById: getTopicById
-};
+export { getTopics, getTopicById };

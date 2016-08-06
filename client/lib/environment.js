@@ -6,10 +6,10 @@
 //
 
 
-var environment = {
+const environment = {
   baseUrl: process.env.PROTOCOL + '://' + process.env.HOST
 };
 
 
 // Exports
-module.exports = environment;
+export default environment;

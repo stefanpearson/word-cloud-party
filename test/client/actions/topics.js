@@ -1,17 +1,17 @@
 // External dependencies
-var sinon = require( 'sinon' ),
-    proxyquire = require( 'proxyquire' ),
-    Promise = require( 'bluebird' ),
-    _ = require( 'lodash' );
+import sinon from 'sinon';
+import proxyquire from 'proxyquire';
+import Promise from 'bluebird';
+import _ from 'lodash';
 
 
 // Dependencies
-var dispatcher = require( '../../../client/lib/dispatcher' ),
-    topicData = require( '../../../data/topics' );
+import dispatcher from '../../../client/lib/dispatcher';
+import topicData from '../../../data/topics';
 
 
 // Test module
-var topicActions = proxyquire( '../../../client/actions/topics', {
+const topicActions = proxyquire( '../../../client/actions/topics', {
 
   '../data/api': {
 
@@ -25,7 +25,7 @@ var topicActions = proxyquire( '../../../client/actions/topics', {
 
   }
 
-} );
+} ).default;
 
 
 describe( 'Client: topicActions', function() {

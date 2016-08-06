@@ -1,5 +1,6 @@
 // External dependencies
-var _ = require( 'lodash' );
+import _ from 'lodash';
+import moment from 'moment';
 
 
 // Dependencies
@@ -9,8 +10,8 @@ var _ = require( 'lodash' );
 /**
  * Output a list of class names based on truthy hash values
  */
-var toClass = function toClass( hash ) {
-  return _.reduce( hash, function( memo, value, key ) {
+const toClass = hash => {
+  return _.reduce( hash, ( memo, value, key ) => {
     if ( value ) {
       if ( memo.length ) {
         memo = memo + ' ' + key;
@@ -23,7 +24,11 @@ var toClass = function toClass( hash ) {
 };
 
 
+/**
+ * Format date
+ */
+const formatDate = dateStr => moment( dateStr ).format( 'D/M' );
+
+
 // Exports
-module.exports = {
-  toClass: toClass
-};
+export { toClass, formatDate };

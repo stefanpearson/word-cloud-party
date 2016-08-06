@@ -1,24 +1,24 @@
 // External dependencies
-var React = require( 'react' ),
-    enzyme = require( 'enzyme' ),
-    proxyquire = require( 'proxyquire' ),
-    sinon = require( 'sinon' ),
-    _ = require( 'lodash' );
+import React from 'react';
+import enzyme from 'enzyme';
+import proxyquire from 'proxyquire';
+import sinon from 'sinon';
+import _ from 'lodash';
 
 
 // Dependencies
-var topicData = require( '../../../data/topics' ),
-    utils = require( '../lib/utils' );
+import topicData from '../../../data/topics';
+import * as utils from '../lib/utils';
 
 
-var mockModules = {
+const mockModules = {
   '../actions/topics': utils.mockTopicActions,
   '../stores/topics': utils.mockTopicStore
 };
 
 
 // Test module
-var WordCloudWord = proxyquire( '../../../client/components/word-cloud-word.jsx', mockModules );
+const WordCloudWord = proxyquire( '../../../client/components/word-cloud-word.jsx', mockModules ).default;
 
 
 describe( 'Client: WordCloudWord component', function() {

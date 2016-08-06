@@ -1,55 +1,65 @@
 // External dependencies
-var React = require( 'react' ),
-    _ = require( 'lodash' );
+import React from 'react';
+import _ from 'lodash';
 
 
 // Dependencies
-var Sentiment = require( './sentiment' ),
-    DayList = require( './day-list' ),
-    topicStore = require( '../stores/topics' );
+import Sentiment from './sentiment';
+import DayList from './day-list';
+import topicStore from '../stores/topics';
 
 
 /**
  * Main Detail component
  */
-var MainDetail = React.createClass( {
+class MainDetail extends React.Component {
 
   /**
-   * Setup state
+   * Constructor
    */
-  getInitialState: function getInitialState() {
-    var topicStoreState = topicStore.getState();
+  constructor( props ) {
 
-    return {
+    const topicStoreState = topicStore.getState();
+
+    // Call super's constructor first
+    super( props );
+
+    // Bind handlers once
+    this.handleUpdatedTopicStore = this.handleUpdatedTopicStore.bind( this );
+
+    // Set initial state
+    this.state = {
       topic: _.find( topicStoreState.topics, { id: topicStoreState.activeTopicId } ) || null
     };
-  },
+
+  }
 
   /**
    * Initialise handler
    */
-  componentDidMount: function componentDidMount() {
+  componentDidMount() {
 
     // Set events
     topicStore.listen( this.handleUpdatedTopicStore );
 
-  },
+  }
 
   /**
    * Gracefully unmount the component
    */
-  componentWillUnmount: function componentDidMount() {
+  componentWillUnmount() {
 
     // Remove events
     topicStore.unlisten( this.handleUpdatedTopicStore );
 
-  },
+  }
 
   /**
    * Handle an update from the Topic Store
    */
-  handleUpdatedTopicStore: function handleUpdatedTopicStore( topicStore ) {
-    var activeTopic = _.find( topicStore.topics, { id: topicStore.activeTopicId } );
+  handleUpdatedTopicStore( topicStore ) {
+
+    const activeTopic = _.find( topicStore.topics, { id: topicStore.activeTopicId } );
 
     if ( activeTopic ) {
       this.setState( {
@@ -57,37 +67,36 @@ var MainDetail = React.createClass( {
       } );
     }
 
-  },
+  }
 
   /**
    * Render!
    */
-  render: function render() {
+  render() {
 
     if ( _.isEmpty( this.state.topic ) ) {
       return this.renderEmpty();
     } else {
       return this.renderDetail();
     }
-  },
+
+  }
 
   /**
    * Render empty if there are no properties
    */
-  renderEmpty: function renderEmpty() {
+  renderEmpty() {
     return (
       <div className="main__side"></div>
     );
-  },
+  }
 
   /**
    * Render the main detail view
    */
-  renderDetail: function renderDetail() {
-    var sentiments,
-        days;
+  renderDetail() {
 
-    sentiments = [
+    const sentiments = [
       {
         sentiment: 'positive',
         value: this.state.topic.sentiment.positive
@@ -102,10 +111,18 @@ var MainDetail = React.createClass( {
       }
     ];
 
-    days = _.chain( this.state.topic.days )
+    const days = _.chain( this.state.topic.days )
       .sortBy( 'date' )
       .reverse()
       .value();
+
+    const statListItems = sentiments.map( ( sentiment, index ) => {
+      return (
+        <div className="stat-list__item" key={ index }>
+          <Sentiment { ...sentiment } />
+        </div>
+      );
+    } );
 
     return (
       <div className="main__side">
@@ -116,23 +133,15 @@ var MainDetail = React.createClass( {
           </div>
         </header>
         <section className="stat-list">
-          {
-            _.map( sentiments, function( sentiment, index ) {
-              return (
-                <div className="stat-list__item" key={ index }>
-                  <Sentiment { ...sentiment } />
-                </div>
-              );
-            } )
-          }
+          { statListItems }
         </section>
         <DayList days={ days } />
       </div>
     );
   }
 
-} );
+};
 
 
 // Exports
-module.exports = MainDetail;
+export default MainDetail;

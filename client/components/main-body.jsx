@@ -1,32 +1,26 @@
 // External dependencies
-var React = require( 'react' );
+import React from 'react';
 
 
 // Dependencies
-var WordCloud = require( './word-cloud' );
+import WordCloud from './word-cloud';
 
 
 /**
  * Main Body component
+ * Stateless function
  */
-var MainBody = React.createClass( {
-
-  /**
-   * Render!
-   */
-  render: function render() {
-    return (
-      <div className="main__body">
-        <header className="header">
-          <h1>Topics</h1>
-        </header>
-        <WordCloud />
-      </div>
-    );
-  }
-
-} );
+let MainBody = props => {
+  return (
+    <div className="main__body">
+      <header className="header">
+        <h1>Topics</h1>
+      </header>
+      <WordCloud />
+    </div>
+  );
+};
 
 
 // Exports
-module.exports = MainBody;
+export default MainBody;

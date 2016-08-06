@@ -1,8 +1,8 @@
 // External dependencies
-var jsdom = require( 'jsdom' );
+import jsdom from 'jsdom';
 
 
-var exposedProperties = [ 'window', 'navigator', 'document' ];
+const exposedProperties = [ 'window', 'navigator', 'document' ];
 
 global.document = jsdom.jsdom( '' );
 global.window = document.defaultView;
@@ -10,7 +10,7 @@ global.navigator = {
   userAgent: 'node.js'
 };
 
-Object.keys( document.defaultView ).forEach( function( property ) {
+Object.keys( document.defaultView ).forEach( property => {
   if ( typeof global[ property ] === 'undefined' ) {
     exposedProperties.push( property );
     global[ property ] = document.defaultView[ property ];
