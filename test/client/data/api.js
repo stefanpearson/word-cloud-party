@@ -1,19 +1,19 @@
 // External dependencies
-var nock = require( 'nock' );
+import nock from 'nock';
 
 
 // Dependencies
-var environment = require( '../../../client/lib/environment' ),
-    topicData = require( '../../../data/topics' );
+import environment from '../../../client/lib/environment';
+import topicData from '../../../data/topics';
 
 
 // Test module
-var api = require( '../../../client/data/api' );
+import * as api from '../../../client/data/api';
 
 
 describe( 'Client: API data manager', function() {
 
-  before( function() {
+  before( () => {
 
     this.expectedTopics = topicData.topics;
     this.expectedTopic = this.expectedTopics[ 0 ];
@@ -24,35 +24,35 @@ describe( 'Client: API data manager', function() {
 
   } );
 
-  after( function() {
+  after( () => {
     nock.cleanAll();
   } );
 
-  describe( 'Retrieving topics', function() {
+  describe( 'Retrieving topics', () => {
 
-    it( 'should retrieve the topics from the API', function( done ) {
+    it( 'should retrieve the topics from the API', done => {
 
       api.getTopics()
-        .then( function( topics ) {
+        .then( topics => {
 
           topics.should.be.an.Array;
           topics.should.have.length( this.expectedTopics.length );
 
           return done();
-        }.bind( this ) );
+        } );
 
     } );
 
-    it( 'should retrieve a single topic from the API', function( done ) {
+    it( 'should retrieve a single topic from the API', done => {
 
       api.getTopicById( this.expectedTopic.id )
-        .then( function( topic ) {
+        .then( topic => {
 
           topic.should.be.an.Object;
           topic.should.have.properties( { id: this.expectedTopic.id } );
 
           return done();
-        }.bind( this ) );
+        } );
 
     } );
 

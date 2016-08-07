@@ -1,13 +1,13 @@
 // External dependencies
-var Alt = require( 'alt' );
+import Alt from 'alt';
 
 
 // Dependencies
 //
 
 
-var alt = new Alt();
+const alt = new Alt();
 
 
 // Exports
-module.exports = alt;
+export default alt;

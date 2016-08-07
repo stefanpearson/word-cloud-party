@@ -1,31 +1,25 @@
 // External dependencies
-var React = require( 'react' );
+import React from 'react';
 
 
 // Dependencies
-var utils = require( '../lib/utils' );
+//
 
 
 /**
  * Bar component
+ * Stateless function
  */
-var Bar = React.createClass( {
-
-  /**
-   * Render!
-   */
-  render: function render() {
-    return (
-      <div className="bar">
-        <div className="bar__value" style={ { width: this.props.value + '%' } }>
-          <div className="bar__label">{ this.props.label }</div>
-        </div>
+const Bar = props => {
+  return (
+    <div className="bar">
+      <div className="bar__value" style={ { width: props.value + '%' } }>
+        <div className="bar__label">{ props.label }</div>
       </div>
-    );
-  }
-
-} );
+    </div>
+  );
+};
 
 
 // Exports
-module.exports = Bar;
+export default Bar;

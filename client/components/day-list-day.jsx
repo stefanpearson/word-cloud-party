@@ -1,53 +1,33 @@
 // External dependencies
-var React = require( 'react' ),
-    moment = require( 'moment' );
+import React from 'react';
 
 
 // Dependencies
-var utils = require( '../lib/utils' ),
-    Bar = require( './bar' );
+import * as utils from '../lib/utils';
+import Bar from './bar';
 
 
 /**
  * Day component
+ * Stateless function
  */
-var DayListDay = React.createClass( {
+const DayListDay = props => {
 
-  /**
-   * Render!
-   */
-  render: function render() {
-    var bar = {
-      value: Math.round( ( this.props.volume / this.props.maxVolume ) * 100 ),
-      label: this.props.volume
-    };
+  const barProps = {
+    value: Math.round( ( props.volume / props.maxVolume ) * 100 ),
+    label: props.volume
+  };
 
-    return (
-      <div className="day-list__item">
-        <div className="day-list__item__label">{ DayListDay.formatDate( this.props.date ) }</div>
-        <div className="day-list__item__value">
-          <Bar { ...bar } />
-        </div>
+  return (
+    <div className="day-list__item">
+      <div className="day-list__item__label">{ utils.formatDate( props.date ) }</div>
+      <div className="day-list__item__value">
+        <Bar { ...barProps } />
       </div>
-    );
-  },
-
-  /**
-   * Static methods
-   */
-  statics: {
-
-    /**
-     * Utility to format the date
-     */
-    formatDate: function formatDate( dateStr ) {
-      return moment( dateStr ).format( 'D/M' );
-    }
-
-  }
-
-} );
+    </div>
+  );
+};
 
 
 // Exports
-module.exports = DayListDay;
+export default DayListDay;

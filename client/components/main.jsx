@@ -1,33 +1,27 @@
 // External dependencies
-var React = require( 'react' );
+import React from 'react';
 
 
 // Dependencies
-var MainBody = require( './main-body' ),
-    MainDetail = require( './main-detail' );
+import MainBody from './main-body';
+import MainDetail from './main-detail';
 
 
 /**
  * Main component
+ * Stateless function
  */
-var Main = React.createClass( {
-
-  /**
-   * Render!
-   */
-  render: function render() {
-    return (
-      <div className="wrapper">
-        <main className="main">
-          <MainBody />
-          <MainDetail />
-        </main>
-      </div>
-    );
-  }
-
-} );
+const Main = props => {
+  return (
+    <div className="wrapper">
+      <main className="main">
+        <MainBody />
+        <MainDetail />
+      </main>
+    </div>
+  );
+};
 
 
 // Exports
-module.exports = Main;
+export default Main;

@@ -1,41 +1,40 @@
 // External dependencies
-var _ = require( 'lodash' );
+import _ from 'lodash';
 
 
 // Dependencies
-var dispatcher = require( '../lib/dispatcher' ),
-    api = require( '../data/api' );
+import dispatcher from '../lib/dispatcher';
+import * as api from '../data/api';
 
 
-/**
- * Topic Action constructor
- */
-var TopicActions = function() {
-
-  // Create actions that pass parameters straight through to the dispatcher
-  this.generateActions( 'updateTopics', 'updateActiveTopicId' );
-
-};
-
-
-TopicActions.prototype = {
+class TopicActions {
 
   /**
-   * Fetch topics from data provider
+   * Constructor
    */
-  fetchTopics: function fetchTopics() {
-    return function( dispatch ) {
+  constructor() {
+
+    // Create actions that pass parameters straight through to the dispatcher
+    this.generateActions( 'updateTopics', 'updateActiveTopicId' );
+
+  }
+
+  /**
+   * Fetch topics from the API and shuffle them
+   */
+  fetchTopics() {
+    return dispatch => {
 
       dispatch();
 
       return api.getTopics()
         .then( _.shuffle )
         .then( this.updateTopics );
-    }.bind( this );
+    };
   }
 
 };
 
 
 // Exports
-module.exports = dispatcher.createActions( TopicActions );
+export default dispatcher.createActions( TopicActions );
