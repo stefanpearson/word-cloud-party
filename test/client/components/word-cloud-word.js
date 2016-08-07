@@ -1,69 +1,80 @@
 // External dependencies
-var React = require( 'react' ),
-    enzyme = require( 'enzyme' ),
-    proxyquire = require( 'proxyquire' ),
-    sinon = require( 'sinon' ),
-    _ = require( 'lodash' );
+import React from 'react';
+import * as enzyme from 'enzyme';
+import sinon from 'sinon';
+import _ from 'lodash';
 
 
 // Dependencies
-var topicData = require( '../../../data/topics' ),
-    utils = require( '../lib/utils' );
-
-
-var mockModules = {
-  '../actions/topics': utils.mockTopicActions,
-  '../stores/topics': utils.mockTopicStore
-};
+import topicData from '../../../data/topics';
+import * as utils from '../lib/utils';
 
 
 // Test module
-var WordCloudWord = proxyquire( '../../../client/components/word-cloud-word.jsx', mockModules );
+import WordCloudWord from '../../../client/components/word-cloud-word';
 
 
 describe( 'Client: WordCloudWord component', function() {
 
+  before( () => {
+
+    // Rewire dependencies to mocks
+    WordCloudWord.__Rewire__( 'topicActions', utils.mockTopicActions );
+    WordCloudWord.__Rewire__( 'topicStore', utils.mockTopicStore );
+
+  } );
+
+  after( () => {
+
+    // Reset dependencies
+    WordCloudWord.__ResetDependency__( 'topicActions' );
+    WordCloudWord.__ResetDependency__( 'topicStore' );
+
+  } );
+
   describe( 'WordCloudWord lifecycle', function() {
 
-    beforeEach( function() {
-      var props = {
+    beforeEach( () => {
+
+      const props = {
         id: topicData.topics[ 0 ].id
       };
 
-      this.topicStoreListenerSpy = sinon.spy( mockModules[ '../stores/topics' ], 'listen' );
+      this.topicStoreListenerSpy = sinon.spy( utils.mockTopicStore, 'listen' );
       this.component = <WordCloudWord { ...props } />;
       this.enzyme = enzyme.mount( this.component );
 
     } );
 
-    afterEach( function() {
-      mockModules[ '../stores/topics' ].listen.restore();
+    afterEach( () => {
+      utils.mockTopicStore.listen.restore();
     } );
 
-    it( 'should have an active state if it matches the active topic in the store when mounted', function() {
+    it( 'should have an active state if it matches the active topic in the store when mounted', () => {
       this.enzyme.state( 'isActive' ).should.eql( true );
     } );
 
-    it( 'should trigger the updateActiveTopicId action on click', function() {
-      var updateActiveTopicIdActionSpy = sinon.spy( mockModules[ '../actions/topics' ], 'updateActiveTopicId' );
+    it( 'should trigger the updateActiveTopicId action on click', () => {
+
+      const updateActiveTopicIdActionSpy = sinon.spy( utils.mockTopicActions, 'updateActiveTopicId' );
 
       this.enzyme.simulate( 'click' );
 
       updateActiveTopicIdActionSpy.callCount.should.eql( 1 );
       updateActiveTopicIdActionSpy.getCall( 0 ).args[ 0 ].should.eql( this.enzyme.props().id );
 
-      mockModules[ '../actions/topics' ].updateActiveTopicId.restore();
+      utils.mockTopicActions.updateActiveTopicId.restore();
 
     } );
 
-    it( 'should listen to the topic store', function() {
+    it( 'should listen to the topic store', () => {
 
       this.topicStoreListenerSpy.callCount.should.eql( 1 );
       this.topicStoreListenerSpy.getCall( 0 ).args[ 0 ].should.be.a.Function;
 
     } );
 
-    it( 'should update the state to be inactive when it doesn\'t match the updated active topic in the store', function() {
+    it( 'should update the state to be inactive when it doesn\'t match the updated active topic in the store', () => {
 
       this.topicStoreListenerSpy.callCount.should.eql( 1 );
       this.topicStoreListenerSpy.getCall( 0 ).args[ 0 ]( {
@@ -77,14 +88,14 @@ describe( 'Client: WordCloudWord component', function() {
 
   describe( 'WordCloudWord rendering', function() {
 
-    before( function() {
+    before( () => {
 
       this.component = <WordCloudWord />;
       this.enzyme = enzyme.mount( this.component );
 
     } );
 
-    it( 'should render as active when the state is active', function() {
+    it( 'should render as active when the state is active', () => {
 
       this.enzyme.setState( { isActive: true } );
 
@@ -92,7 +103,7 @@ describe( 'Client: WordCloudWord component', function() {
 
     } );
 
-    it( 'should render as inactive when the state is inactive', function() {
+    it( 'should render as inactive when the state is inactive', () => {
 
       this.enzyme.setState( { isActive: false } );
 
@@ -100,7 +111,7 @@ describe( 'Client: WordCloudWord component', function() {
 
     } );
 
-    it( 'should render as positive when the topic has a positive sentiment', function() {
+    it( 'should render as positive when the topic has a positive sentiment', () => {
 
       this.enzyme.setProps( { sentimentScore: 60 } );
 
@@ -110,7 +121,7 @@ describe( 'Client: WordCloudWord component', function() {
 
     } );
 
-    it( 'should render as neutral when the topic has a neutral sentiment', function() {
+    it( 'should render as neutral when the topic has a neutral sentiment', () => {
 
       this.enzyme.setProps( { sentimentScore: 40 } );
 
@@ -120,7 +131,7 @@ describe( 'Client: WordCloudWord component', function() {
 
     } );
 
-    it( 'should render as negative when the topic has a negative sentiment', function() {
+    it( 'should render as negative when the topic has a negative sentiment', () => {
 
       this.enzyme.setProps( { sentimentScore: 39 } );
 
@@ -130,17 +141,18 @@ describe( 'Client: WordCloudWord component', function() {
 
     } );
 
-    it( 'should render the correct weight', function() {
+    it( 'should render the correct weight', () => {
 
-      _.times( function( index ) {
-        var weight = index + 1;
+      _.times( index => {
+
+        const weight = index + 1;
 
         this.enzyme.setProps( { weight: weight } );
 
         this.enzyme.hasClass( 'word--' + weight ).should.be.true;
         this.enzyme.hasClass( 'word--' + ( weight - 1 ) ).should.be.false;
 
-      }.bind( this ), 6 );
+      }, 6 );
 
     } );
 

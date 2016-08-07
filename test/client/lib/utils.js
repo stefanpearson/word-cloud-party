@@ -1,26 +1,26 @@
 // External dependencies
-var React = require( 'react' ),
-    _ = require( 'lodash' );
+import React from 'react';
+import _ from 'lodash';
 
 
 // Dependencies
-var topicData = require( '../../../data/topics' );
+import topicData from '../../../data/topics';
 
 
 /**
- * Mock React component object
+ * Create mock React component stateless function
  */
-var mockComponent = {
-  render: function render() {
-    return ( <div></div> );
-  }
+const createMockComponent = () => {
+  return props => {
+    return ( <div /> );
+  };
 };
 
 
 /**
  * Mock topic actions
  */
-var mockTopicActions = {
+const mockTopicActions = {
   fetchTopics: _.noop,
   updateTopics: _.noop,
   updateActiveTopicId: _.noop
@@ -30,8 +30,8 @@ var mockTopicActions = {
 /**
  * Mock topic store
  */
-var mockTopicStore = {
-  getState: function getState() {
+const mockTopicStore = {
+  getState: () => {
     return {
       activeTopicId: topicData.topics[ 0 ].id,
       topics: topicData.topics
@@ -43,8 +43,4 @@ var mockTopicStore = {
 
 
 // Exports
-module.exports = {
-  mockComponent: mockComponent,
-  mockTopicActions: mockTopicActions,
-  mockTopicStore: mockTopicStore
-};
+export { createMockComponent, mockTopicActions, mockTopicStore };

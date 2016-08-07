@@ -1,33 +1,34 @@
 // External dependencies
-var React = require( 'react' ),
-    ReactDom = require( 'react-dom' );
+import React from 'react';
+import ReactDom from 'react-dom';
 
 
 // Dependencies
-var environment = require( './lib/environment' ),
-    Main = require( './components/main' );
+import environment from './lib/environment';
+import Main from './components/main';
 
 
 /**
- * Initialise the app
+ * Application
  */
-var init = function init( appEl ) {
+class App {
 
-  // Mount the app
-  if ( appEl ) {
+  /**
+   * Constructor
+   */
+  constructor( appEl ) {
+
+    // Mount the app
     ReactDom.render( <Main />, appEl );
+
   }
 
 };
 
 
-// Manually initialise during test environment
-if ( environment.name != 'test' ) {
-  init( document.getElementById( 'app' ) );
-}
+// Instantiate
+new App( document.getElementById( 'app' ) );
 
 
 // Exports
-module.exports = {
-  init: init
-};
+export default App;

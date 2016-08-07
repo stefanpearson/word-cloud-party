@@ -1,72 +1,83 @@
 // External dependencies
-var React = require( 'react' );
+import React from 'react';
 
 
 // Dependencies
-var utils = require( '../lib/utils' ),
-    topicActions = require( '../actions/topics' ),
-    topicStore = require( '../stores/topics' );
+import * as utils from '../lib/utils';
+import topicActions from '../actions/topics';
+import topicStore from '../stores/topics';
 
 
 /**
  * Word component
  */
-var WordCloudWord = React.createClass( {
+class WordCloudWord extends React.Component {
 
   /**
-   * Setup state
+   * Constructor
    */
-  getInitialState: function getInitialState() {
-    var topicStoreState = topicStore.getState();
+  constructor( props ) {
 
-    return {
-      isActive: topicStoreState.activeTopicId == this.props.id
+    const topicStoreState = topicStore.getState();
+
+    // Call super's constructor first
+    super( props );
+
+    // Bind handlers once
+    this.handleUpdatedTopicStore = this.handleUpdatedTopicStore.bind( this );
+    this.handleClick = this.handleClick.bind( this );
+
+    // Set initial state
+    this.state = {
+      isActive: this.props.id == topicStoreState.activeTopicId
     };
-  },
+
+  }
 
   /**
    * Initialise handler
    */
-  componentDidMount: function componentDidMount() {
+  componentDidMount() {
 
     // Set events
     topicStore.listen( this.handleUpdatedTopicStore );
 
-  },
+  }
 
   /**
    * Gracefully unmount the component
    */
-  componentWillUnmount: function componentDidMount() {
+  componentWillUnmount() {
 
     // Remove events
     topicStore.unlisten( this.handleUpdatedTopicStore );
 
-  },
+  }
 
   /**
    * Handle an update from the Topic Store
    */
-  handleUpdatedTopicStore: function handleUpdatedTopicStore( topicStore ) {
+  handleUpdatedTopicStore( topicStore ) {
 
     this.setState( {
       isActive: this.props.id == topicStore.activeTopicId
     } );
 
-  },
+  }
 
   /**
    * Handle a click event on the component
    */
-  handleClick: function handleClick() {
+  handleClick() {
     topicActions.updateActiveTopicId( this.props.id );
-  },
+  }
 
   /**
    * Render!
    */
-  render: function render() {
-    var wordClasses = {
+  render() {
+
+    const wordClasses = {
       'word': true,
       'word--positive': this.props.sentimentScore >= 60,
       'word--negative': this.props.sentimentScore < 40,
@@ -80,8 +91,8 @@ var WordCloudWord = React.createClass( {
     );
   }
 
-} );
+};
 
 
 // Exports
-module.exports = WordCloudWord;
+export default WordCloudWord;

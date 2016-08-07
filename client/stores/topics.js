@@ -3,32 +3,34 @@
 
 
 // Dependencies
-var dispatcher = require( '../lib/dispatcher' ),
-    topicActions = require( '../actions/topics' );
+import dispatcher from '../lib/dispatcher';
+import topicActions from '../actions/topics';
 
 
 /**
  * Topic Store constructor
  */
-var TopicStore = function() {
+class TopicStore {
 
-  this.topics = [];
-  this.activeTopicId = null;
+  /**
+   * Constructor
+   */
+  constructor() {
 
-  this.bindListeners( {
-    handleUpdateTopics: topicActions.updateTopics,
-    handleUpdateActiveTopicId: topicActions.updateActiveTopicId
-  } );
+    this.topics = [];
+    this.activeTopicId = null;
 
-};
+    this.bindListeners( {
+      handleUpdateTopics: topicActions.updateTopics,
+      handleUpdateActiveTopicId: topicActions.updateActiveTopicId
+    } );
 
-
-TopicStore.prototype = {
+  }
 
   /**
    * Handle an update of the topics
    */
-  handleUpdateTopics: function handleUpdateTopics( topics ) {
+  handleUpdateTopics( topics ) {
 
     this.topics = topics;
 
@@ -36,12 +38,12 @@ TopicStore.prototype = {
       this.handleUpdateActiveTopicId( topics[ 0 ].id );
     }
 
-  },
+  }
 
   /**
    * Handle an updated active topic
    */
-  handleUpdateActiveTopicId: function handleUpdateActiveTopicId( topicId ) {
+  handleUpdateActiveTopicId( topicId ) {
     this.activeTopicId = topicId;
   }
 
@@ -49,4 +51,4 @@ TopicStore.prototype = {
 
 
 // Exports
-module.exports = dispatcher.createStore( TopicStore, 'topicStore' );
+export default dispatcher.createStore( TopicStore, 'topicStore' );
