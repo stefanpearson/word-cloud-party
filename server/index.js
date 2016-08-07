@@ -50,7 +50,6 @@ class App {
       // Start server
       this.server.listen( environment.port, function() {
         logger.info( environment.project + ' running at ' + environment.baseUrl );
-        // TODO: emit event
       } );
 
       // Log the environment
