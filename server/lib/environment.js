@@ -1,13 +1,13 @@
 // External dependencies
-var os = require( 'os' ),
-    dotenv = require( 'dotenv' );
+const os = require( 'os' );
+const dotenv = require( 'dotenv' );
 
 
 // Dependencies
 //
 
 
-var environmentName = process.env.NODE_ENV || process.env.node_env || 'development';
+const environmentName = process.env.NODE_ENV || process.env.node_env || 'development';
 
 
 // Load .env in development environment
@@ -16,7 +16,7 @@ if ( environmentName == 'development' ) {
 }
 
 
-var environment = {
+const environment = {
   project: 'Word Cloud Party',
   sys: {
     os: os.hostname(),

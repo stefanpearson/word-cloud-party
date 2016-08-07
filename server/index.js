@@ -1,66 +1,70 @@
 // External dependencies
-var http = require( 'http' ),
-    express = require( 'express' ),
-    serveStatic = require( 'serve-static' ),
-    bodyParser = require( 'body-parser' ),
-    cors = require( 'cors' ),
-    compression = require( 'compression' ),
-    Promise = require( 'bluebird' ),
-    _ = require( 'lodash' );
+const http = require( 'http' );
+const express = require( 'express' );
+const serveStatic = require( 'serve-static' );
+const bodyParser = require( 'body-parser' );
+const cors = require( 'cors' );
+const compression = require( 'compression' );
+const Promise = require( 'bluebird' );
+const _ = require( 'lodash' );
 
 
 // Dependencies
-var middleware = require( './lib/middleware' ),
-    router = require( './lib/router' ),
-    environment = require( './lib/environment' ),
-    logger = require( './lib/logger' ),
-    nunjucks = require( './lib/nunjucks' );
+const middleware = require( './lib/middleware' );
+const router = require( './lib/router' );
+const environment = require( './lib/environment' );
+const logger = require( './lib/logger' );
+const nunjucks = require( './lib/nunjucks' );
+const controllers = require( './controllers' );
 
 
 /**
- * Initialise the server
+ * Server app
  */
-var init = function init() {
-  return new Promise( function( resolve, reject ) {
-    var app = express(),
-        server = http.createServer( app );
+class App {
 
-    // Initialise controllers
-    require( './controllers' );
+    /**
+     * Constructor
+     */
+    constructor() {
 
-    // Initialise template engine
-    nunjucks.init( app );
+      this.express = express();
+      this.server = http.createServer( this.express );
 
-    // Middleware
-    app.use( middleware.removeTrailingSlash );
-    app.use( cors() );
-    app.use( bodyParser.json() );
-    app.use( bodyParser.urlencoded( { extended: true } ) );
-    app.use( compression() );
-    app.use( router );
-    app.use( serveStatic( './server/public' ) );
-    app.use( middleware.notFound );
+      // Initialise template engine
+      nunjucks.init( this.express );
 
-    // Start app
-    server.listen( environment.port, function() {
-      logger.info( environment.project + ' running at ' + environment.baseUrl );
-      return resolve();
-    } );
+      // Instantiate controllers
+      this.controllers = controllers.map( Controller => new Controller( router ) );
 
-    // Log the environment
-    logger.debug( JSON.stringify( environment ) );
+      // Middleware
+      this.express.use( middleware.removeTrailingSlash );
+      this.express.use( cors() );
+      this.express.use( bodyParser.json() );
+      this.express.use( bodyParser.urlencoded( { extended: true } ) );
+      this.express.use( compression() );
+      this.express.use( router );
+      this.express.use( serveStatic( './server/public' ) );
+      this.express.use( middleware.notFound );
 
-  } );
+      // Start server
+      this.server.listen( environment.port, function() {
+        logger.info( environment.project + ' running at ' + environment.baseUrl );
+      } );
+
+      // Log the environment
+      logger.debug( JSON.stringify( environment ) );
+
+    }
+
 };
 
 
 // Manually initialise during test environment
 if ( environment.name != 'test' ) {
-  init();
+  new App();
 }
 
 
 // Exports
-module.exports = {
-  init: init
-};
+module.exports = App;

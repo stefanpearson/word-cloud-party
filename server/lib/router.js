@@ -1,12 +1,12 @@
 // External dependencies
-var express = require( 'express' );
+const express = require( 'express' );
 
 
 // Dependencies
 //
 
 
-var router = new express.Router();
+const router = new express.Router();
 
 
 // Exports
