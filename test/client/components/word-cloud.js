@@ -1,7 +1,6 @@
 // External dependencies
 import React from 'react';
-import enzyme from 'enzyme';
-import proxyquire from 'proxyquire';
+import * as enzyme from 'enzyme';
 import sinon from 'sinon';
 import _ from 'lodash';
 import isSorted from 'compute-issorted';
@@ -12,50 +11,66 @@ import topicData from '../../../data/topics';
 import * as utils from '../lib/utils';
 
 
-const mockModules = {
-  './word-cloud-word': React.createClass( utils.mockComponent ),
-  '../actions/topics': utils.mockTopicActions,
-  '../stores/topics': utils.mockTopicStore
-};
-
-
 // Test module
-const WordCloud = proxyquire( '../../../client/components/word-cloud.jsx', mockModules ).default;
+import WordCloud from '../../../client/components/word-cloud';
+
+
+// Mock modules
+const WordCloudWordMock = utils.createMockComponent();
 
 
 describe( 'Client: WordCloud component', function() {
 
+  before( () => {
+
+    // Rewire dependencies to mocks
+    WordCloud.__Rewire__( 'WordCloudWord', WordCloudWordMock );
+    WordCloud.__Rewire__( 'topicActions', utils.mockTopicActions );
+    WordCloud.__Rewire__( 'topicStore', utils.mockTopicStore );
+
+  } );
+
+  after( () => {
+
+    // Reset dependencies
+    WordCloud.__ResetDependency__( 'WordCloudWord' );
+    WordCloud.__ResetDependency__( 'topicActions' );
+    WordCloud.__ResetDependency__( 'topicStore' );
+
+  } );
+
   describe( 'WordCloud lifecycle', function() {
 
-    beforeEach( function() {
+    beforeEach( () => {
 
       this.component = <WordCloud />;
-      this.fetchTopicsSpy = sinon.spy( mockModules[ '../actions/topics' ], 'fetchTopics' );
-      this.topicStoreListenerSpy = sinon.spy( mockModules[ '../stores/topics' ], 'listen' );
+      this.fetchTopicsSpy = sinon.spy( utils.mockTopicActions, 'fetchTopics' );
+      this.topicStoreListenerSpy = sinon.spy( utils.mockTopicStore, 'listen' );
       this.enzyme = enzyme.mount( this.component );
 
     } );
 
-    afterEach( function() {
+    afterEach( () => {
 
-      mockModules[ '../actions/topics' ].fetchTopics.restore();
-      mockModules[ '../stores/topics' ].listen.restore();
+      utils.mockTopicActions.fetchTopics.restore();
+      utils.mockTopicStore.listen.restore();
 
     } );
 
-    it( 'should trigger a fetchTopics action when mounted', function() {
+    it( 'should trigger a fetchTopics action when mounted', () => {
       this.fetchTopicsSpy.callCount.should.eql( 1 );
     } );
 
-    it( 'should listen to the topic store', function() {
+    it( 'should listen to the topic store', () => {
 
       this.topicStoreListenerSpy.callCount.should.eql( 1 );
       this.topicStoreListenerSpy.getCall( 0 ).args[ 0 ].should.be.a.Function;
 
     } );
 
-    it( 'should update the state when the topic store updates the topics', function() {
-      var expectedTopics = _.sampleSize( topicData.topics, 4 );
+    it( 'should update the state when the topic store updates the topics', () => {
+
+      const expectedTopics = _.sampleSize( topicData.topics, 4 );
 
       this.topicStoreListenerSpy.callCount.should.eql( 1 );
       this.topicStoreListenerSpy.getCall( 0 ).args[ 0 ]( {
@@ -69,23 +84,25 @@ describe( 'Client: WordCloud component', function() {
 
   describe( 'WordCloud rendering', function() {
 
-    beforeEach( function() {
+    beforeEach( () => {
 
-      this.state = { topics: mockModules[ '../stores/topics' ].getState().topics };
+      this.state = { topics: utils.mockTopicStore.getState().topics };
       this.component = <WordCloud />;
       this.enzyme = enzyme.mount( this.component );
       this.enzyme.setState( this.state );
 
     } );
 
-    it( 'should render a list of WordCloudWord components with the right properties', function() {
-      var wordCloudWordComponents = this.enzyme.find( mockModules[ './word-cloud-word' ] );
+    it( 'should render a list of WordCloudWord components with the right properties', () => {
+
+      const wordCloudWordComponents = this.enzyme.find( WordCloudWordMock );
 
       wordCloudWordComponents.length.should.eql( this.state.topics.length );
 
-      wordCloudWordComponents.forEach( function( wordCloudWordComponent, index ) {
-        var topic = this.state.topics[ index ],
-            props = wordCloudWordComponent.props();
+      wordCloudWordComponents.forEach( ( wordCloudWordComponent, index ) => {
+
+        const topic = this.state.topics[ index ];
+        const props = wordCloudWordComponent.props();
 
         props.should.have.properties( [ 'id', 'label', 'sentimentScore', 'weight' ] );
         props.should.have.properties( {
@@ -95,41 +112,42 @@ describe( 'Client: WordCloud component', function() {
         } );
         props.weight.should.be.within( 1, 6 );
 
-      }.bind( this ) );
+      } );
 
     } );
 
   } );
 
-  describe( 'WordCloud utilities', function() {
+  describe( 'WordCloud static utilities', function() {
 
-    before( function() {
+    before( () => {
 
       this.sortedTopicIds = WordCloud.sortTopicsByVolume( topicData.topics );
-      this.sortedTopics = _.map( this.sortedTopicIds, function( value ) {
-        return _.find( topicData.topics, { id: value } );
+      this.sortedTopics = this.sortedTopicIds.map( value => {
+        return _.find( topicData.topics, { id: value } )
       } );
 
     } );
 
-    it( 'should sort topics by volume', function() {
-      var volumes = _.map( this.sortedTopics, function( topic ) {
-        return topic.volume;
-      } );
+    it( 'should sort topics by volume', () => {
+
+      const volumes = this.sortedTopics.map( topic => topic.volume );
 
       isSorted( volumes ).should.be.true;
 
     } );
 
-    it( 'should return a heavy weight if there is a high volume', function() {
-      var topic = _.first( this.sortedTopics );
+    it( 'should return a heavy weight if there is a high volume', () => {
+
+      const topic = _.first( this.sortedTopics );
 
       WordCloud.getTopicWeight( topic, this.sortedTopicIds ).should.eql( 1 );
 
     } );
 
-    it( 'should return a light weight if there is a low volume', function() {
-      var topic = _.last( this.sortedTopics );
+    it( 'should return a light weight if there is a low volume', () => {
+
+      const topic = _.last( this.sortedTopics );
 
       WordCloud.getTopicWeight( topic, this.sortedTopicIds ).should.eql( 6 );
 

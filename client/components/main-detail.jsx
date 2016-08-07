@@ -144,4 +144,5 @@ class MainDetail extends React.Component {
 
 
 // Exports
-export default MainDetail;
+//export default MainDetail;
+module.exports = MainDetail;

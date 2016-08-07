@@ -1,6 +1,5 @@
 // External dependencies
 import sinon from 'sinon';
-import proxyquire from 'proxyquire';
 import Promise from 'bluebird';
 import _ from 'lodash';
 
@@ -11,45 +10,51 @@ import topicData from '../../../data/topics';
 
 
 // Test module
-const topicActions = proxyquire( '../../../client/actions/topics', {
+import topicActions from '../../../client/actions/topics';
 
-  '../data/api': {
 
-    getTopics: function getTopics() {
-      return Promise.resolve( topicData.topics );
-    },
-
-    getTopicById: function getTopicById() {
-      return Promise.resolve( topicData.topics[ 0 ] );
-    }
-
-  }
-
-} ).default;
+// Mock modules
+const apiMock = {
+  getTopics: () => Promise.resolve( topicData.topics ),
+  getTopicById: () => Promise.resolve( topicData.topics[ 0 ] )
+};
 
 
 describe( 'Client: topicActions', function() {
 
+  before( () => {
+
+    // Rewire dependencies to mocks
+    topicActions.__Rewire__( 'api', apiMock );
+
+  } );
+
+  after( () => {
+
+    // Reset dependencies
+    topicActions.__ResetDependency__( 'api' );
+
+  } );
+
   describe( 'Triggering fetchTopics', function() {
 
-    beforeEach( function( done ) {
+    beforeEach( done => {
 
       this.dispatcherSpy = sinon.spy( dispatcher.dispatcher, 'dispatch' );
 
       topicActions.fetchTopics()
-        .then( function() {
-          done()
-        } );
+        .then( () => done() );
 
     } );
 
-    afterEach( function() {
+    afterEach( () => {
       dispatcher.dispatcher.dispatch.restore();
     } );
 
-    it( 'should dispatch the fetchTopics and updateTopics actions', function() {
-      var dispatchFetchTopicsSpyCall = this.dispatcherSpy.getCall( 0 ),
-          dispatchUpdateTopicsSpyCall = this.dispatcherSpy.getCall( 1 );
+    it( 'should dispatch the fetchTopics and updateTopics actions', () => {
+
+      const dispatchFetchTopicsSpyCall = this.dispatcherSpy.getCall( 0 );
+      const dispatchUpdateTopicsSpyCall = this.dispatcherSpy.getCall( 1 );
 
       this.dispatcherSpy.callCount.should.eql( 2 );
       dispatchFetchTopicsSpyCall.args[ 0 ].details.name.should.eql( 'fetchTopics' );
@@ -58,10 +63,11 @@ describe( 'Client: topicActions', function() {
 
     } );
 
-    it( 'should shuffle the topics', function() {
-      var dispatchUpdateTopicsSpyCall = this.dispatcherSpy.getCall( 1 ),
-          originalIds = _.map( topicData.topics, function( topic ) { return topic.id; } ),
-          retrievedIds = _.map( dispatchUpdateTopicsSpyCall.args[ 0 ].data, function( topic ) { return topic.id; } );
+    it( 'should shuffle the topics', () => {
+
+      const dispatchUpdateTopicsSpyCall = this.dispatcherSpy.getCall( 1 );
+      const originalIds = topicData.topics.map( topic => topic.id );
+      const retrievedIds = dispatchUpdateTopicsSpyCall.args[ 0 ].data.map( topic => topic.id );
 
       retrievedIds.length.should.eql( originalIds.length );
       retrievedIds.should.not.eql( originalIds );
@@ -72,7 +78,7 @@ describe( 'Client: topicActions', function() {
 
   describe( 'Triggering updateTopics', function() {
 
-    beforeEach( function() {
+    beforeEach( () => {
 
       this.dispatcherSpy = sinon.spy( dispatcher.dispatcher, 'dispatch' );
 
@@ -80,12 +86,13 @@ describe( 'Client: topicActions', function() {
 
     } );
 
-    afterEach( function() {
+    afterEach( () => {
       dispatcher.dispatcher.dispatch.restore();
     } );
 
-    it( 'should dispatch the updateTopics action with the given topics', function() {
-      var dispatcherSpyCall = this.dispatcherSpy.getCall( 0 );
+    it( 'should dispatch the updateTopics action with the given topics', () => {
+
+      const dispatcherSpyCall = this.dispatcherSpy.getCall( 0 );
 
       this.dispatcherSpy.callCount.should.eql( 1 );
       dispatcherSpyCall.args[ 0 ].details.name.should.eql( 'updateTopics' );
@@ -97,7 +104,7 @@ describe( 'Client: topicActions', function() {
 
   describe( 'Triggering updateActiveTopic', function() {
 
-    beforeEach( function() {
+    beforeEach( () => {
 
       this.dispatcherSpy = sinon.spy( dispatcher.dispatcher, 'dispatch' );
       this.activeTopicId = topicData.topics[ 0 ].id;
@@ -106,12 +113,13 @@ describe( 'Client: topicActions', function() {
 
     } );
 
-    afterEach( function() {
+    afterEach( () => {
       dispatcher.dispatcher.dispatch.restore();
     } );
 
-    it( 'should dispatch the updateActiveTopic action with the given active topic ID', function() {
-      var dispatcherSpyCall = this.dispatcherSpy.getCall( 0 );
+    it( 'should dispatch the updateActiveTopic action with the given active topic ID', () => {
+
+      const dispatcherSpyCall = this.dispatcherSpy.getCall( 0 );
 
       this.dispatcherSpy.callCount.should.eql( 1 );
       dispatcherSpyCall.args[ 0 ].details.name.should.eql( 'updateActiveTopicId' );

@@ -18,7 +18,7 @@ class TopicStore {
   constructor() {
 
     this.topics = [];
-    this.activeTopicId = [];
+    this.activeTopicId = null;
 
     this.bindListeners( {
       handleUpdateTopics: topicActions.updateTopics,

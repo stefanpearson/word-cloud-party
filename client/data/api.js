@@ -9,7 +9,7 @@ import environment from '../lib/environment';
 /**
  * Get topic collection
  */
-let getTopics = () => {
+const getTopics = () => {
   return request( {
     uri: environment.baseUrl + '/api/topics',
     method: 'GET',
@@ -29,7 +29,7 @@ let getTopics = () => {
 /**
  * Get topic
  */
-let getTopicById = id => {
+const getTopicById = id => {
   return request( {
     uri: environment.baseUrl + '/api/topics/' + id,
     method: 'GET',

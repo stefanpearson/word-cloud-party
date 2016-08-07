@@ -8,12 +8,12 @@ import topicData from '../../../data/topics';
 
 
 /**
- * Mock React component object
+ * Create mock React component stateless function
  */
-const mockComponent = {
-  render: () => {
-    return ( <div></div> );
-  }
+const createMockComponent = () => {
+  return props => {
+    return ( <div /> );
+  };
 };
 
 
@@ -43,4 +43,4 @@ const mockTopicStore = {
 
 
 // Exports
-export { mockComponent, mockTopicActions, mockTopicStore };
+export { createMockComponent, mockTopicActions, mockTopicStore };

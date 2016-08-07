@@ -1,19 +1,19 @@
 // External dependencies
-var dotenv = require( 'dotenv' ),
-    gulp = require( 'gulp' ),
-    sass = require( 'gulp-sass' ),
-    cleanCss = require( 'gulp-clean-css' ),
-    rename = require( 'gulp-rename' ),
-    source = require( 'vinyl-source-stream' ),
-    browserify = require( 'browserify' ),
-    watchify = require( 'watchify' ),
-    babelify = require( 'babelify' ),
-    uglify = require( 'gulp-uglify' ),
-    streamify = require( 'gulp-streamify' ),
-    envify = require( 'envify' );
+const dotenv = require( 'dotenv' );
+const gulp = require( 'gulp' );
+const sass = require( 'gulp-sass' );
+const cleanCss = require( 'gulp-clean-css' );
+const rename = require( 'gulp-rename' );
+const source = require( 'vinyl-source-stream' );
+const browserify = require( 'browserify' );
+const watchify = require( 'watchify' );
+const babelify = require( 'babelify' );
+const uglify = require( 'gulp-uglify' );
+const streamify = require( 'gulp-streamify' );
+const envify = require( 'envify' );
 
 
-var environmentName = process.env.NODE_ENV || process.env.node_env || 'development';
+const environmentName = process.env.NODE_ENV || process.env.node_env || 'development';
 
 
 // Load .env in development environment
@@ -23,7 +23,7 @@ if ( environmentName == 'development' ) {
 
 
 // Compile Sass
-gulp.task( 'sass', function() {
+gulp.task( 'sass', () => {
   return gulp.src( './sass/main.scss' )
     .pipe( sass().on( 'error', sass.logError ) )
     .pipe( cleanCss() )
@@ -33,8 +33,9 @@ gulp.task( 'sass', function() {
 
 
 // Client side JS
-gulp.task( 'browserify', function() {
-  var bundler = browserify( {
+gulp.task( 'browserify', () => {
+
+  const bundler = browserify( {
       entries: [ './client/index.js' ],
       transform: [ babelify.configure( { presets: [ 'react' ] } ), envify ],
       extensions: [ '.jsx' ]
@@ -42,13 +43,13 @@ gulp.task( 'browserify', function() {
 
   return bundler.bundle()
     .pipe( source( 'build.js' ) )
-    //.pipe( streamify( uglify() ) )
+    .pipe( streamify( uglify() ) )
     .pipe( gulp.dest( './server/public/js' ) );
 } );
 
 
 // Watch files in development
-gulp.task( 'watch', function() {
+gulp.task( 'watch', () => {
   gulp.watch( './sass/**/*.scss', [ 'sass' ] );
   gulp.watch( './client/**/*.js*', [ 'browserify' ] );
 } );

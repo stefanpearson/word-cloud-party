@@ -19,9 +19,7 @@ class App {
   constructor( appEl ) {
 
     // Mount the app
-    if ( appEl ) {
-      ReactDom.render( <Main />, appEl );
-    }
+    ReactDom.render( <Main />, appEl );
 
   }
 

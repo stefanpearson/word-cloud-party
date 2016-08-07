@@ -1,5 +1,5 @@
 // External dependencies
-import proxyquire from 'proxyquire';
+//
 
 
 // Dependencies
@@ -8,7 +8,7 @@ import topicData from '../../../data/topics';
 
 
 // Test module
-const topicStore = proxyquire( '../../../client/stores/topics', {} ).default;
+import topicStore from '../../../client/stores/topics';
 
 
 describe( 'Client: topicStore', function() {
@@ -18,13 +18,19 @@ describe( 'Client: topicStore', function() {
   } );
 
   it( 'should update the store when an updateTopics action is dispatched', () => {
+
     dispatcher.dispatcher.dispatch( 'TopicActions.updateTopics', topicData.topics );
+
     topicStore.getState().topics.should.have.length( topicData.topics.length );
+
   } );
 
   it( 'should update the store when an updateActiveTopicId action is dispatched', () => {
+
     dispatcher.dispatcher.dispatch( 'TopicActions.updateActiveTopicId', topicData.topics[ 0 ].id );
+
     topicStore.getState().activeTopicId.should.eql( topicData.topics[ 0 ].id );
+
   } );
 
 } );
