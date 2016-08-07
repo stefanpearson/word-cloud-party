@@ -23,22 +23,30 @@ const errors = {
 
 
 /**
- * Response error class
- * If code is provided, do error lookup by code
+ * Response error
  */
-const ResponseError = function( code, options = {} ) {
+class ResponseError extends Error {
 
-  const baseError = Object.create( errors[ ( errors.hasOwnProperty( code ) ? code : 'unknown' ) ] );
+  /**
+   * Constructor
+   * If code is provided, do error lookup by code
+   */
+  constructor( code, options = {} ) {
 
-  this.code = options.code || code;
-  this.message = options.message || baseError.message;
-  this.statusCode = options.statusCode || baseError.statusCode;
-  this.errors = options.errors || [];
+    const baseError = Object.create( errors[ ( errors.hasOwnProperty( code ) ? code : 'unknown' ) ] );
 
-  return this;
+    super( options.code || code );
+
+    this.name = 'ResponseError';
+
+    this.code = options.code || code;
+    this.message = options.message || baseError.message;
+    this.statusCode = options.statusCode || baseError.statusCode;
+    this.errors = options.errors || [];
+
+  }
+
 };
-
-ResponseError.prototype = Object.create( Error.prototype );
 
 
 // Exports
