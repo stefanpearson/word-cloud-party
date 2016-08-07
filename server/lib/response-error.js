@@ -1,12 +1,12 @@
 // External dependencies
-var _ = require( 'lodash' );
+const _ = require( 'lodash' );
 
 
 // Dependencies
 //
 
 
-var errors = {
+const errors = {
   'notFound': {
     message: 'Unknown resource. Please double check the request URL!',
     statusCode: 404
@@ -23,15 +23,12 @@ var errors = {
 
 
 /**
- * Response error constructor
+ * Response error class
  * If code is provided, do error lookup by code
  */
-var ResponseError = function ResponseError( code, options ) {
-  var baseError = {};
+const ResponseError = function( code, options = {} ) {
 
-  options = options || {};
-
-  baseError = Object.create( errors[ ( errors.hasOwnProperty( code ) ? code : 'unknown' ) ] );
+  const baseError = Object.create( errors[ ( errors.hasOwnProperty( code ) ? code : 'unknown' ) ] );
 
   this.code = options.code || code;
   this.message = options.message || baseError.message;

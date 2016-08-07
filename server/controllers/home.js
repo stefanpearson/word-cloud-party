@@ -3,44 +3,43 @@
 
 
 // Dependencies
-var router = require( '../lib/router' ),
-    utils = require( '../lib/utils' ),
-    wrapResponse = require( '../lib/response-wrapper' );
+const utils = require( '../lib/utils' );
+const wrapResponse = require( '../lib/response-wrapper' );
 
 
 /**
- * Initialise
+ * Home controller
  */
-var init = function() {
+class Home {
 
-  router.get( '/', wrapResponse( requestGetHome ) );
+  /**
+   * Constructor
+   */
+  constructor( router ) {
+    router.get( '/', wrapResponse( this.requestGetHome ) );
+  }
+
+  /**
+   * Request GET /
+   */
+  requestGetHome( request, response ) {
+
+    response = utils.promisify( response );
+
+    return response.renderPromise( 'shell.html', {
+      layout: 'layouts/topics.html',
+      document: {
+        title: 'Topics',
+        description: '…'
+      }
+    } )
+      .then( result => {
+        return response.status( 200 ).send( result );
+      } );
+  }
 
 };
-
-
-/**
- * Request GET /
- */
-var requestGetHome = function requestGetHome( request, response ) {
-
-  response = utils.promisify( response );
-
-  return response.renderPromise( 'shell.html', {
-    layout: 'layouts/topics.html',
-    document: {
-      title: 'Topics',
-      description: '…'
-    }
-  } )
-    .then( function( result ) {
-      return response.status( 200 ).send( result );
-    } );
-};
-
-
-// Initialise
-init();
 
 
 // Exports
-//
+module.exports = Home;

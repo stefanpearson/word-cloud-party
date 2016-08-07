@@ -1,16 +1,16 @@
 // External dependencies
-var Promise = require( 'bluebird' );
+const Promise = require( 'bluebird' );
 
 
 // Dependencies
-var logger = require( './logger' ),
-    ResponseError = require( './response-error' );
+const logger = require( './logger' );
+const ResponseError = require( './response-error' );
 
 
 /**
  * Respond when recovering from an error
  */
-var respondWithError = function respondWithError( response, responseError ) {
+const respondWithError = ( response, responseError ) => {
   if ( !response.headersSent ) {
     return response.status( responseError.statusCode ).send( responseError );
   } else {
@@ -22,14 +22,14 @@ var respondWithError = function respondWithError( response, responseError ) {
 /**
  * Attach default catches for a promise within a response handler
  */
-var wrapResponse = function wrapResponse( promise ) {
+const wrapResponse = function( promise ) {
   return function( request, response, next ) {
     return promise.apply( null, arguments )
       .catch( ResponseError, function( responseError ) {
         return respondWithError( response, responseError );
       } )
-      .catch( function ( error ) {
-        var responseError = new ResponseError( 'unknown' );
+      .catch( error => {
+        const responseError = new ResponseError( 'unknown' );
         logger.error( 'Unhandled request error', error.stack );
         return respondWithError( response, responseError );
       } );

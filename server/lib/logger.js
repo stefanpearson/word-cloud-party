@@ -1,13 +1,13 @@
 // External dependencies
-var winston = require( 'winston' );
+const winston = require( 'winston' );
 
 
 // Dependencies
-var environment = require( './environment' );
+const environment = require( './environment' );
 
 
 // Instantiate a Winston logger with transports
-var logger = new winston.Logger( {
+const logger = new winston.Logger( {
   transports: [
     new winston.transports.Console( {
       colorize: true,

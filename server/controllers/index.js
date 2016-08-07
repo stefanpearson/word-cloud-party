@@ -1,2 +1,5 @@
-require( './home' );
-require( './api/topics' );
+// Exports
+module.exports = [
+  require( './home' ),
+  require( './api/topics' )
+];
