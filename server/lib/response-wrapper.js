@@ -25,7 +25,7 @@ const respondWithError = ( response, responseError ) => {
 const wrapResponse = function( promise ) {
   return function( request, response, next ) {
     return promise.apply( null, arguments )
-      .catch( ResponseError, function( responseError ) {
+      .catch( { name: 'ResponseError' }, function( responseError ) {
         return respondWithError( response, responseError );
       } )
       .catch( error => {
