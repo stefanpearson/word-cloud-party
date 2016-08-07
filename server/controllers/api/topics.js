@@ -1,62 +1,63 @@
 // External dependencies
-var Promise = require( 'bluebird' ),
-    _ = require( 'lodash' );
+const Promise = require( 'bluebird' );
+const _ = require( 'lodash' );
 
 
 // Dependencies
-var router = require( '../../lib/router' ),
-    ResponseError = require( '../../lib/response-error' ),
-    wrapResponse = require( '../../lib/response-wrapper' ),
-    topicData = require( '../../../data/topics' );
+const ResponseError = require( '../../lib/response-error' );
+const wrapResponse = require( '../../lib/response-wrapper' );
+const topicData = require( '../../../data/topics' );
 
 
-var topicCollection = _.map( topicData.topics, function( topic ) {
-  return _.omit( topic, 'queries' );
-} );
+const topicCollection = topicData.topics.map( topic => _.omit( topic, 'queries' ) );
 
 
 /**
- * Initialise
+ * API topics controller
  */
-var init = function() {
+class Topics {
 
-  router.get( '/api/topics', wrapResponse( requestGetTopics ) );
-  router.get( '/api/topics/:id', wrapResponse( requestGetTopic ) );
+  /**
+   * Constructor
+   */
+  constructor( router ) {
+
+    router.get( '/api/topics', wrapResponse( this.requestGetTopics ) );
+    router.get( '/api/topics/:id', wrapResponse( this.requestGetTopic ) );
+
+  }
+
+  /**
+   * Request GET /api/topics
+   * Responds with the topic collection
+   */
+  requestGetTopics( request, response ) {
+    return Promise.resolve()
+      .then( () => {
+        return response.status( 200 ).send( topicCollection );
+      } );
+  }
+
+  /**
+   * Request GET /api/topics/:id
+   * Responds with a single topic
+   */
+  requestGetTopic( request, response ) {
+    return Promise.resolve()
+      .then( () => {
+
+        const topic = _.find( topicCollection, { id: request.params.id } );
+
+        if ( !topic ) {
+          throw new ResponseError( 'notFound' );
+        }
+
+        return response.status( 200 ).send( topic );
+      } );
+  }
 
 };
-
-
-/**
- * Request GET /api/topics
- */
-var requestGetTopics = function requestGetTopics( request, response ) {
-  return Promise.resolve()
-    .then( function() {
-      return response.status( 200 ).send( topicCollection );
-    } );
-};
-
-
-/**
- * Request GET /api/topics/:id
- */
-var requestGetTopic = function requestGetTopic( request, response ) {
-  return Promise.resolve()
-    .then( function() {
-      var topic = _.find( topicCollection, { id: request.params.id } );
-
-      if ( !topic ) {
-        throw new ResponseError( 'notFound' );
-      }
-
-      return response.status( 200 ).send( topic );
-    } );
-};
-
-
-// Initialise
-init();
 
 
 // Exports
-//
+module.exports = Topics;

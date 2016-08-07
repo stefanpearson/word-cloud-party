@@ -1,12 +1,12 @@
 // External dependencies
-var request = require( 'request-promise' ),
-    _ = require( 'lodash' );
+const request = require( 'request-promise' );
+const _ = require( 'lodash' );
 
 
 // Dependencies
-var shared = require( '../lib/shared' ),
-    environment = require( '../../../server/lib/environment' ),
-    topics = require( '../../../data/topics' );
+const shared = require( '../lib/shared' );
+const environment = require( '../../../server/lib/environment' );
+const topics = require( '../../../data/topics' );
 
 
 describe( 'Server: Topics API', function () {
@@ -24,10 +24,10 @@ describe( 'Server: Topics API', function () {
         json: true,
         resolveWithFullResponse: true
       } )
-        .then( function( response ) {
+        .then( response => {
           this.response = response;
           done();
-        }.bind( this ) );
+        } );
 
     } );
 
@@ -56,10 +56,10 @@ describe( 'Server: Topics API', function () {
         resolveWithFullResponse: true,
         simple: false
       } )
-        .then( function( response ) {
+        .then( response => {
           this.response = response;
           done();
-        }.bind( this ) );
+        } );
 
     } );
 
@@ -86,10 +86,10 @@ describe( 'Server: Topics API', function () {
         resolveWithFullResponse: true,
         simple: false
       } )
-        .then( function( response ) {
+        .then( response => {
           this.response = response;
           done();
-        }.bind( this ) );
+        } );
 
     } );
 

@@ -1,13 +1,13 @@
 // External dependencies
-var nunjucks = require( 'nunjucks' );
+const nunjucks = require( 'nunjucks' );
 
 
 // Dependencies
-var environment = require( './environment' );
+const environment = require( './environment' );
 
 
 // Local variables
-var nunjucksEnvironment = nunjucks.configure( './server/templates', {
+const nunjucksEnvironment = nunjucks.configure( './server/templates', {
   autoescape: true,
   watch: true
 } );
@@ -16,7 +16,7 @@ var nunjucksEnvironment = nunjucks.configure( './server/templates', {
 /**
  * Initialise
  */
-var init = function init( app ) {
+const init = app => {
 
   nunjucksEnvironment.express( app );
   nunjucksEnvironment.addGlobal( 'env', environment );
