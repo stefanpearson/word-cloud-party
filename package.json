@@ -20,6 +20,9 @@
       "email": "stefan@ribot.co.uk"
     }
   ],
+  "engines": {
+    "node": "6.2.2"
+  },
   "dependencies": {
     "alt": "^0.18.4",
     "bluebird": "^3.4.0",
