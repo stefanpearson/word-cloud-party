@@ -5,6 +5,7 @@
 // Dependencies
 import dispatcher from '../lib/dispatcher';
 import topicActions from '../actions/topics';
+import _ from 'lodash';
 
 
 /**
@@ -32,7 +33,7 @@ class TopicStore {
    */
   handleUpdateTopics( topics ) {
 
-    this.topics = topics;
+    this.topics = _.sortBy(topics, 'volume');
 
     if ( this.activeTopicId === null && topics.length ) {
       this.handleUpdateActiveTopicId( topics[ 0 ].id );
